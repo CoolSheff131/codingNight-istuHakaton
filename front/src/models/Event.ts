@@ -17,3 +17,10 @@ export interface Event {
   relatedQueries: Event[];
   affectedSchedule: Pair;
 }
+
+export interface EventFilters {
+  eventType?: number[]; // массив id
+  teacher?: number[]; // массив id
+  group?: number[]; // Массив  id
+  auditory?: number[]; // Массив  id
+}
