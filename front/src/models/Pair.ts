@@ -18,3 +18,12 @@ export interface Pair {
   teachers: Teacher[];
   auditories: Auditory[];
 }
+
+export interface PairFilters {
+  pairType?: number[]; // массив id
+  discipline?: number[]; // массив id
+  teacher?: number[]; // массив id
+  group?: number[]; // Массив  id
+  auditory?: number[]; // Массив  id
+  week_begining?: string;
+}
