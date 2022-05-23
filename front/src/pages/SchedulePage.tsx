@@ -3,79 +3,19 @@ import {
   Button,
   Container,
   IconButton,
-  InputAdornment,
   Tab,
   Tabs,
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import SwipeableViews from 'react-swipeable-views';
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
 import ScheduleItem from '../components/ScheduleItem';
+import { useTheme } from '@mui/material/styles';
 
-interface StyledTabProps {
-  label: string;
-}
-const StyledTab = styled((props: StyledTabProps) => (
-  <Tab disableRipple {...props} />
-))(({ theme }) => ({
-  textTransform: 'none',
-
-  fontSize: 16,
-  padding: 0,
-  marginRight: theme.spacing(1),
-  color: '#fff',
-  transition: '.1s',
-  '&.Mui-selected': {
-    fontSize: 18,
-    color: '#fff',
-  },
-  '&.Mui-focusVisible': {
-    backgroundColor: 'rgba(100, 95, 228, 0.32)',
-  },
-}));
-
-interface StyledTabsProps {
-  children?: React.ReactNode;
-  value: number;
-  onChange: (event: React.SyntheticEvent, newValue: number) => void;
-}
-
-const StyledTabs = styled((props: StyledTabsProps) => (
-  <Tabs
-    {...props}
-    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
-  />
-))({
-  '& .MuiTabs-indicator': {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-  },
-  '& .MuiTabs-indicatorSpan': {
-    width: '100%',
-    backgroundColor: '#fff',
-  },
-});
-
-const ColorButton = styled(Button)(({ theme }) => ({
-  marginTop: 14,
-  fontSize: 18,
-  paddingLeft: 13,
-  paddingRight: 13,
-  paddingTop: 8,
-  paddingBottom: 8,
-  color: '#7165E3',
-  textTransform: 'none',
-  backgroundColor: '#E8E6FF',
-  '&:hover': {
-    color: '#FFFFFF',
-    backgroundColor: '#7165E3',
-  },
-}));
 const FavoriteButton = styled(Button)(({ theme }) => ({
   fontSize: 10,
   fontWeight: 500,
@@ -94,7 +34,10 @@ const FavoriteButton = styled(Button)(({ theme }) => ({
 
 const SchedulePage = () => {
   const [value, setValue] = React.useState(0);
-
+  const theme = useTheme();
+  const handleChangeIndex = (index: number) => {
+    setValue(index);
+  };
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -159,7 +102,10 @@ const SchedulePage = () => {
           maxWidth="sm"
           sx={{ paddingTop: '25px', paddingBottom: '25px' }}
         >
-          <ScheduleItem />
+          <SwipeableViews>
+            <ScheduleItem />
+            <ScheduleItem />
+          </SwipeableViews>
         </Container>
       </Box>
     </Box>

@@ -9,6 +9,8 @@ export default function ScheduleItem() {
         paddingLeft: '10px',
         paddingBottom: '10px',
         paddingRight: '10px',
+        marginLeft: '10px',
+        marginRight: '10px',
         backgroundColor: '#E8E6FF',
         borderRadius: '10px',
       }}
