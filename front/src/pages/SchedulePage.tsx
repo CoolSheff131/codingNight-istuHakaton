@@ -87,7 +87,7 @@ const SchedulePage = () => {
           sx={{ paddingTop: '25px', paddingBottom: '25px' }}
         >
           <Box sx={{ marginTop: '15px' }}>
-            <SwipeableViews>
+            <SwipeableViews enableMouseEvents resistance>
               <ScheduleItem type={Type.type1} />
               <ScheduleItem type={Type.type1} />
             </SwipeableViews>
@@ -99,7 +99,7 @@ const SchedulePage = () => {
             <ScheduleItem type={Type.type2} />
           </Box>
           <Box sx={{ marginTop: '15px' }}>
-            <SwipeableViews>
+            <SwipeableViews enableMouseEvents resistance>
               <ScheduleItem type={Type.type1} />
               <ScheduleItem type={Type.type1} />
             </SwipeableViews>

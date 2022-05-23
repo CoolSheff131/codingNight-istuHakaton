@@ -1,10 +1,12 @@
-import { CssBaseline } from '@mui/material';
+import { Box, CssBaseline } from '@mui/material';
 import Router from '../router/Router';
 
 const App = () => (
   <>
     <CssBaseline />
-    <Router />
+    <Box sx={{ backgroundColor: '#8B80F8', marginLeft: 'calc(100vw - 100%)' }}>
+      <Router />
+    </Box>
   </>
 );
 
