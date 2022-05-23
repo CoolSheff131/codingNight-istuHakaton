@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import ColorButton from './ColorButton';
 
 const GroupTab = () => {
@@ -14,16 +15,13 @@ const GroupTab = () => {
           flexWrap: 'wrap',
         }}
       >
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
-        <ColorButton variant="contained">ИИТиАД</ColorButton>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <ColorButton key={number} variant="contained">
+              ИИТиАД
+            </ColorButton>
+          );
+        })}
       </Box>
 
       <Typography
@@ -43,188 +41,30 @@ const GroupTab = () => {
           justifyContent: 'start',
         }}
       >
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <NavLink
+              key={number}
+              to={`${number}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                variant="text"
+                sx={{
+                  padding: 0,
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  color: '#3B3D48',
+                  fontSize: 16,
+                  marginTop: '7px',
+                  marginRight: '10px',
+                }}
+              >
+                ИСТб-19-1
+              </Button>
+            </NavLink>
+          );
+        })}
       </Box>
       <Typography
         sx={{
@@ -243,188 +83,30 @@ const GroupTab = () => {
           justifyContent: 'start',
         }}
       >
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <NavLink
+              key={number}
+              to={`${number}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                variant="text"
+                sx={{
+                  padding: 0,
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  color: '#3B3D48',
+                  fontSize: 16,
+                  marginTop: '7px',
+                  marginRight: '10px',
+                }}
+              >
+                ИСТб-19-1
+              </Button>
+            </NavLink>
+          );
+        })}
       </Box>
       <Typography
         sx={{
@@ -443,188 +125,30 @@ const GroupTab = () => {
           justifyContent: 'start',
         }}
       >
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <NavLink
+              key={number}
+              to={`${number}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                variant="text"
+                sx={{
+                  padding: 0,
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  color: '#3B3D48',
+                  fontSize: 16,
+                  marginTop: '7px',
+                  marginRight: '10px',
+                }}
+              >
+                ИСТб-19-1
+              </Button>
+            </NavLink>
+          );
+        })}
       </Box>
       <Typography
         sx={{
@@ -643,188 +167,30 @@ const GroupTab = () => {
           justifyContent: 'start',
         }}
       >
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          ИСТб-19-1
-        </Button>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <NavLink
+              key={number}
+              to={`${number}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                variant="text"
+                sx={{
+                  padding: 0,
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  color: '#3B3D48',
+                  fontSize: 16,
+                  marginTop: '7px',
+                  marginRight: '10px',
+                }}
+              >
+                ИСТб-19-1
+              </Button>
+            </NavLink>
+          );
+        })}
       </Box>
     </Box>
   );

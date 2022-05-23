@@ -14,13 +14,12 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
-import GroupTab from '../components/GroupTab';
-import TeacherTab from '../components/TeacherTab';
-import AuditoryTab from '../components/AuditoryTab';
-import EventTab from '../components/EventTab';
-
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
+import FavoriteButton from '../components/FavoriteButton';
 interface StyledTabProps {
   label: string;
+  onClick: () => void;
 }
 const StyledTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
@@ -67,25 +66,19 @@ const StyledTabs = styled((props: StyledTabsProps) => (
   },
 });
 
-const FavoriteButton = styled(Button)(({ theme }) => ({
-  fontSize: 10,
-  fontWeight: 500,
-  paddingLeft: 13,
-  paddingRight: 13,
-  paddingTop: 8,
-  paddingBottom: 8,
-  color: '#7165E3',
-  textTransform: 'none',
-  backgroundColor: '#FFFFFF',
-  '&:hover': {
-    color: '#FFFFFF',
-    backgroundColor: '#7165E3',
-  },
-}));
-
 const HomePage = () => {
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
 
+  const [value, setValue] = React.useState(
+    location.pathname === '/group'
+      ? 0
+      : location.pathname === '/teacher'
+      ? 1
+      : location.pathname === '/auditory'
+      ? 2
+      : 3,
+  );
+  const navigate = useNavigate();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -114,12 +107,24 @@ const HomePage = () => {
             open={state}
             onClose={() => setState(false)}
             onOpen={() => setState(true)}
+            PaperProps={{ sx: { width: '100%', backgroundColor: '#7165E3' } }}
           >
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Button>Группы</Button>
-              <Button>Преподаватели</Button>
-              <Button>Аудитории</Button>
-              <Button>Мероприятия</Button>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Typography sx={{ color: 'white' }}>
+                  MommyDoll Schedule
+                </Typography>
+                <IconButton
+                  sx={{ color: 'white' }}
+                  onClick={() => setState(false)}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+              <Button sx={{ color: 'white' }}>Группы</Button>
+              <Button sx={{ color: 'white' }}>Преподаватели</Button>
+              <Button sx={{ color: 'white' }}>Аудитории</Button>
+              <Button sx={{ color: 'white' }}>Мероприятия</Button>
             </Box>
           </SwipeableDrawer>
           <Typography
@@ -141,20 +146,34 @@ const HomePage = () => {
         <SearchBar />
 
         <Box sx={{ display: 'flex', marginTop: '15px' }}>
-          <FavoriteButton sx={{ marginRight: '9px' }} variant="contained">
+          <FavoriteButton
+            onClick={() => navigate('/schedule')}
+            sx={{ marginRight: '9px' }}
+            variant="contained"
+          >
             ИСТб-19-1
           </FavoriteButton>
-          <FavoriteButton sx={{ marginRight: '9px' }} variant="contained">
+          <FavoriteButton
+            onClick={() => navigate('/schedule')}
+            sx={{ marginRight: '9px' }}
+            variant="contained"
+          >
             ЭВМб-19-1
           </FavoriteButton>
         </Box>
 
         <Calendar />
         <StyledTabs value={value} onChange={handleChange}>
-          <StyledTab label="Группы" />
-          <StyledTab label="Преподаватели" />
-          <StyledTab label="Аудитории" />
-          <StyledTab label="Мероприятия" />
+          <StyledTab label="Группы" onClick={() => navigate('group')} />
+
+          <StyledTab
+            label="Преподаватели"
+            onClick={() => navigate('teacher')}
+          />
+
+          <StyledTab label="Аудитории" onClick={() => navigate('auditory')} />
+
+          <StyledTab label="Мероприятия" onClick={() => navigate('event')} />
         </StyledTabs>
       </Container>
       <Box
@@ -166,10 +185,7 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="sm">
-          {value === 0 && <GroupTab />}
-          {value === 1 && <TeacherTab />}
-          {value === 2 && <AuditoryTab />}
-          {value === 3 && <EventTab />}
+          <Outlet />
         </Container>
       </Box>
     </Box>

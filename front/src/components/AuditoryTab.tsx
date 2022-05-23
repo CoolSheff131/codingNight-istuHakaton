@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import ColorButton from './ColorButton';
 
 const AuditoryTab = () => {
@@ -64,146 +65,30 @@ const AuditoryTab = () => {
           justifyContent: 'start',
         }}
       >
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <NavLink
+              key={number}
+              to={`${number}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                variant="text"
+                sx={{
+                  padding: 0,
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  color: '#3B3D48',
+                  fontSize: 16,
+                  marginTop: '7px',
+                  marginRight: '10px',
+                }}
+              >
+                Г-101
+              </Button>
+            </NavLink>
+          );
+        })}
       </Box>
       <Typography
         sx={{
@@ -222,146 +107,30 @@ const AuditoryTab = () => {
           justifyContent: 'start',
         }}
       >
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
-        <Button
-          variant="text"
-          sx={{
-            padding: 0,
-            textTransform: 'none',
-            fontWeight: 400,
-            color: '#3B3D48',
-            fontSize: 16,
-            marginTop: '7px',
-            marginRight: '10px',
-          }}
-        >
-          Г-101
-        </Button>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <NavLink
+              key={number}
+              to={`${number}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                variant="text"
+                sx={{
+                  padding: 0,
+                  textTransform: 'none',
+                  fontWeight: 400,
+                  color: '#3B3D48',
+                  fontSize: 16,
+                  marginTop: '7px',
+                  marginRight: '10px',
+                }}
+              >
+                Г-101
+              </Button>
+            </NavLink>
+          );
+        })}
       </Box>
     </Box>
   );

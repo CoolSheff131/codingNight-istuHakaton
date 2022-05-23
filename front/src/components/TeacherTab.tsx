@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import ColorButton from './ColorButton';
 
 const TeacherTab = () => {
@@ -14,103 +15,39 @@ const TeacherTab = () => {
           flexWrap: 'wrap',
         }}
       >
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
-        <ColorButton variant="contained">A</ColorButton>
+        {Array.from(Array(10).keys()).map((number) => {
+          return (
+            <ColorButton key={number} variant="contained">
+              A
+            </ColorButton>
+          );
+        })}
       </Box>
 
-      <Button
-        variant="text"
-        sx={{
-          padding: 0,
-          textTransform: 'none',
-          fontWeight: 400,
-          color: '#3B3D48',
-          fontSize: 16,
-          marginTop: '7px',
-          marginRight: '10px',
-        }}
-      >
-        Асанов И.И.
-      </Button>
-      <Button
-        variant="text"
-        sx={{
-          padding: 0,
-          textTransform: 'none',
-          fontWeight: 400,
-          color: '#3B3D48',
-          fontSize: 16,
-          marginTop: '7px',
-          marginRight: '10px',
-        }}
-      >
-        Асанов И.И.
-      </Button>
-      <Button
-        variant="text"
-        sx={{
-          padding: 0,
-          textTransform: 'none',
-          fontWeight: 400,
-          color: '#3B3D48',
-          fontSize: 16,
-          marginTop: '7px',
-          marginRight: '10px',
-        }}
-      >
-        Асанов И.И.
-      </Button>
-      <Button
-        variant="text"
-        sx={{
-          padding: 0,
-          textTransform: 'none',
-          fontWeight: 400,
-          color: '#3B3D48',
-          fontSize: 16,
-          marginTop: '7px',
-          marginRight: '10px',
-        }}
-      >
-        Асанов И.И.
-      </Button>
-      <Button
-        variant="text"
-        sx={{
-          padding: 0,
-          textTransform: 'none',
-          fontWeight: 400,
-          color: '#3B3D48',
-          fontSize: 16,
-          marginTop: '7px',
-          marginRight: '10px',
-        }}
-      >
-        Асанов И.И.
-      </Button>
-      <Button
-        variant="text"
-        sx={{
-          padding: 0,
-          textTransform: 'none',
-          fontWeight: 400,
-          color: '#3B3D48',
-          fontSize: 16,
-          marginTop: '7px',
-          marginRight: '10px',
-        }}
-      >
-        Асанов И.И.
-      </Button>
+      {Array.from(Array(10).keys()).map((number) => {
+        return (
+          <NavLink
+            key={number}
+            to={`${number}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Button
+              variant="text"
+              sx={{
+                padding: 0,
+                textTransform: 'none',
+                fontWeight: 400,
+                color: '#3B3D48',
+                fontSize: 16,
+                marginTop: '7px',
+                marginRight: '10px',
+              }}
+            >
+              Асанов И.И.
+            </Button>
+          </NavLink>
+        );
+      })}
     </Box>
   );
 };

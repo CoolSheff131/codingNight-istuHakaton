@@ -1,8 +1,7 @@
-import { Box, Button, Container, IconButton, Typography } from '@mui/material';
+import { Box, Container, IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SwipeableViews from 'react-swipeable-views';
 import React from 'react';
-import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
 import ScheduleItem, { Type } from '../components/ScheduleItem';
@@ -10,7 +9,7 @@ import Break from '../components/Break';
 import { NavLink } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 
-const SchedulePage = () => {
+const ScheduleAuditoryPage = () => {
   return (
     <Box
       sx={{
@@ -30,7 +29,7 @@ const SchedulePage = () => {
             component="h2"
             sx={{ fontSize: 22, color: 'white' }}
           >
-            Расписание групп
+            Расписание аудитории
           </Typography>
         </Box>
         <Box sx={{ display: 'flex' }}>
@@ -47,7 +46,7 @@ const SchedulePage = () => {
               Главная /
             </Typography>
           </NavLink>
-          <NavLink to={'/group'} style={{ textDecoration: 'none' }}>
+          <NavLink to={'/auditory'} style={{ textDecoration: 'none' }}>
             <Typography
               variant="h2"
               sx={{
@@ -57,9 +56,20 @@ const SchedulePage = () => {
                 marginRight: '5px',
               }}
             >
-              Группы
+              Аудитории /
             </Typography>
           </NavLink>
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: 16,
+              color: 'white',
+              marginTop: '12px',
+              marginRight: '5px',
+            }}
+          >
+            АД-211
+          </Typography>
         </Box>
 
         <SearchBar />
@@ -117,4 +127,4 @@ const SchedulePage = () => {
   );
 };
 
-export default SchedulePage;
+export default ScheduleAuditoryPage;

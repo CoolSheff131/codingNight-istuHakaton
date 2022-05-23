@@ -53,11 +53,12 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/react-swipeable-views": "^0.13.1",
     "eslint": "^8.16.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
-    "prettier": "^2.6.2",
+    "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
-    "husky": "^8.0.1"
+    "prettier": "^2.6.2"
   }
 }

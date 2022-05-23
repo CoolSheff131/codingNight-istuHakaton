@@ -103,7 +103,7 @@ const CustomPickersDay = styled(PickersDay, {
 
 export default function CustomDay() {
   const [value, setValue] = React.useState<Date | null>(new Date());
-  const [isOneWeek, setIsOneWeek] = React.useState(false);
+  const [isOneWeek, setIsOneWeek] = React.useState(true);
 
   React.useEffect(() => {
     const a = document.getElementsByClassName(

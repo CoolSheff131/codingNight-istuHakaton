@@ -1,8 +1,7 @@
-import { Box, Button, Container, IconButton, Typography } from '@mui/material';
+import { Box, Container, IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SwipeableViews from 'react-swipeable-views';
 import React from 'react';
-import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
 import ScheduleItem, { Type } from '../components/ScheduleItem';
@@ -10,7 +9,7 @@ import Break from '../components/Break';
 import { NavLink } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 
-const SchedulePage = () => {
+const ScheduleTeacherPage = () => {
   return (
     <Box
       sx={{
@@ -47,7 +46,7 @@ const SchedulePage = () => {
               Главная /
             </Typography>
           </NavLink>
-          <NavLink to={'/group'} style={{ textDecoration: 'none' }}>
+          <NavLink to={'/teacher'} style={{ textDecoration: 'none' }}>
             <Typography
               variant="h2"
               sx={{
@@ -57,9 +56,20 @@ const SchedulePage = () => {
                 marginRight: '5px',
               }}
             >
-              Группы
+              Преподаватели /
             </Typography>
           </NavLink>
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: 16,
+              color: 'white',
+              marginTop: '12px',
+              marginRight: '5px',
+            }}
+          >
+            Иванов Иван Иванович
+          </Typography>
         </Box>
 
         <SearchBar />
@@ -77,7 +87,7 @@ const SchedulePage = () => {
           component="h2"
           sx={{ fontSize: 40, color: 'white', marginTop: '15px' }}
         >
-          АД-211
+          Иванов Иван Иванович
         </Typography>
         <Calendar />
       </Container>
@@ -117,4 +127,4 @@ const SchedulePage = () => {
   );
 };
 
-export default SchedulePage;
+export default ScheduleTeacherPage;
