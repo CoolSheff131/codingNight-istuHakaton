@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import React from 'react';
 import { styled } from '@mui/material/styles';
+import Calendar from '../components/Calendar';
 
 interface StyledTabProps {
   label: string;
@@ -177,6 +178,7 @@ const HomePage = () => {
           </FavoriteButton>
         </Box>
 
+        <Calendar />
         <StyledTabs value={value} onChange={handleChange}>
           <StyledTab label="Группы" />
           <StyledTab label="Преподаватели" />
