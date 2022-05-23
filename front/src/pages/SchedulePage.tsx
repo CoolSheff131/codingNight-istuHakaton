@@ -1,20 +1,12 @@
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Tab,
-  Tabs,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Container, IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SwipeableViews from 'react-swipeable-views';
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
-import ScheduleItem from '../components/ScheduleItem';
-import { useTheme } from '@mui/material/styles';
+import ScheduleItem, { Type } from '../components/ScheduleItem';
+import Break from '../components/Break';
 
 const FavoriteButton = styled(Button)(({ theme }) => ({
   fontSize: 10,
@@ -33,14 +25,6 @@ const FavoriteButton = styled(Button)(({ theme }) => ({
 }));
 
 const SchedulePage = () => {
-  const [value, setValue] = React.useState(0);
-  const theme = useTheme();
-  const handleChangeIndex = (index: number) => {
-    setValue(index);
-  };
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
   return (
     <Box
       sx={{
@@ -102,10 +86,24 @@ const SchedulePage = () => {
           maxWidth="sm"
           sx={{ paddingTop: '25px', paddingBottom: '25px' }}
         >
-          <SwipeableViews>
-            <ScheduleItem />
-            <ScheduleItem />
-          </SwipeableViews>
+          <Box sx={{ marginTop: '15px' }}>
+            <SwipeableViews>
+              <ScheduleItem type={Type.type1} />
+              <ScheduleItem type={Type.type1} />
+            </SwipeableViews>
+          </Box>
+          <Box sx={{ marginTop: '15px' }}>
+            <Break />
+          </Box>
+          <Box sx={{ marginTop: '15px' }}>
+            <ScheduleItem type={Type.type2} />
+          </Box>
+          <Box sx={{ marginTop: '15px' }}>
+            <SwipeableViews>
+              <ScheduleItem type={Type.type1} />
+              <ScheduleItem type={Type.type1} />
+            </SwipeableViews>
+          </Box>
         </Container>
       </Box>
     </Box>

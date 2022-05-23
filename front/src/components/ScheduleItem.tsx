@@ -1,7 +1,16 @@
 import { Box, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
-export default function ScheduleItem() {
+
+export enum Type {
+  type1,
+  type2,
+}
+
+interface ScheduleItemProps {
+  type: Type;
+}
+const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
   return (
     <Box
       sx={{
@@ -11,7 +20,7 @@ export default function ScheduleItem() {
         paddingRight: '10px',
         marginLeft: '10px',
         marginRight: '10px',
-        backgroundColor: '#E8E6FF',
+        backgroundColor: type === Type.type1 ? '#E8E6FF' : '#FFFFFF',
         borderRadius: '10px',
       }}
     >
@@ -114,70 +123,76 @@ export default function ScheduleItem() {
           </Typography>
         </Box>
       </Box>
-      <Typography
-        sx={{
-          color: '#3B3D48',
-          fontSize: '14px',
-          fontWeight: 500,
-          marginRight: '5px',
-        }}
-      >
-        Примечание: подгруппа 1
-      </Typography>
-      <Divider light sx={{ marginTop: '15px' }} />
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          marginTop: '10px',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <ErrorOutlineOutlinedIcon sx={{ color: 'red' }} />
+      {type === Type.type1 && (
+        <>
           <Typography
             sx={{
               color: '#3B3D48',
-              fontSize: '12px',
-              fontWeight: 400,
-              marginLeft: '11px',
+              fontSize: '14px',
+              fontWeight: 500,
+              marginRight: '5px',
             }}
           >
-            Несколько предметов в это время
+            Примечание: подгруппа 1
           </Typography>
-        </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Divider light sx={{ marginTop: '15px' }} />
           <Box
             sx={{
-              width: '6px',
-              height: '6px',
-              marginRight: '3px',
-              borderRadius: '3px',
-              backgroundColor: '#7165E3',
+              display: 'flex',
+              alignItems: 'center',
+              marginTop: '10px',
+              justifyContent: 'space-between',
             }}
-          />
-          <Box
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <ErrorOutlineOutlinedIcon sx={{ color: 'red' }} />
+              <Typography
+                sx={{
+                  color: '#3B3D48',
+                  fontSize: '12px',
+                  fontWeight: 400,
+                  marginLeft: '11px',
+                }}
+              >
+                Несколько предметов в это время
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Box
+                sx={{
+                  width: '6px',
+                  height: '6px',
+                  marginRight: '3px',
+                  borderRadius: '3px',
+                  backgroundColor: '#7165E3',
+                }}
+              />
+              <Box
+                sx={{
+                  width: '6px',
+                  height: '6px',
+                  marginRight: '3px',
+                  borderRadius: '3px',
+                  backgroundColor: '#C5BFFF',
+                }}
+              />
+            </Box>
+          </Box>
+          <Typography
             sx={{
-              width: '6px',
-              height: '6px',
-              marginRight: '3px',
-              borderRadius: '3px',
-              backgroundColor: '#C5BFFF',
+              color: '#7165E3',
+              fontSize: '12px',
+              fontWeight: 500,
+              textAlign: 'center',
+              margintTop: '11px',
             }}
-          />
-        </Box>
-      </Box>
-      <Typography
-        sx={{
-          color: '#7165E3',
-          fontSize: '12px',
-          fontWeight: 500,
-          textAlign: 'center',
-          margintTop: '11px',
-        }}
-      >
-        36 минут до конца
-      </Typography>
+          >
+            36 минут до конца
+          </Typography>
+        </>
+      )}
     </Box>
   );
-}
+};
+
+export default ScheduleItem;

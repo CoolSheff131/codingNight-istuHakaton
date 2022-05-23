@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { styled } from '@mui/material/styles';
-import { InputAdornment, Typography } from '@mui/material';
+import { InputAdornment, Popper, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
@@ -43,6 +43,17 @@ const CssTextField = styled(TextField)({
 });
 
 export default function SearchField() {
+  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setOpen((previousOpen) => !previousOpen);
+  };
+
+  const canBeOpen = open && Boolean(anchorEl);
+  const id = canBeOpen ? 'transition-popper' : undefined;
+
   return (
     <Autocomplete
       id="grouped-demo"
@@ -50,7 +61,7 @@ export default function SearchField() {
       groupBy={(option) => option.type}
       getOptionLabel={(option) => option.title}
       sx={{
-        width: 300,
+        width: '100%',
         '& 	.MuiAutocomplete-groupLabel': {
           backgroundColor: 'black',
         },
@@ -104,8 +115,12 @@ export default function SearchField() {
 
       //     );
       // }}
+      PopperComponent={(popperProps: any) => {
+        return <Popper {...popperProps} sx={{ top: '10px' }} />;
+      }}
       renderInput={(params) => (
         <CssTextField
+          onClick={handleClick}
           {...params}
           placeholder="Поиск"
           // InputProps={{
