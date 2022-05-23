@@ -6,14 +6,14 @@ import {
   InputAdornment,
   Tab,
   Tabs,
-  TextField,
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
+
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
+import SearchBar from '../components/SearchBar';
 
 interface StyledTabProps {
   label: string;
@@ -91,36 +91,6 @@ const FavoriteButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const CssTextField = styled(TextField)({
-  '&': {
-    backgroundColor: 'white',
-    borderRadius: '10px',
-    outline: 'none',
-    width: '100%',
-    marginTop: '18px',
-  },
-
-  '& label.Mui-focused': {
-    color: 'transparent',
-  },
-  '& .MuiInput-underline:after': {},
-  '& .MuiOutlinedInput-root': {
-    '&::placeholder': {
-      color: 'blue',
-      fontSize: '1.5em',
-    },
-    '& fieldset': {
-      borderColor: 'transparent',
-    },
-    '&:hover fieldset': {
-      borderColor: 'transparent',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'transparent',
-    },
-  },
-});
-
 const HomePage = () => {
   const [value, setValue] = React.useState(0);
 
@@ -157,17 +127,7 @@ const HomePage = () => {
           Расписание / Группы
         </Typography>
 
-        <CssTextField
-          placeholder="Поиск"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon sx={{ color: '#A3A2BA' }} />
-              </InputAdornment>
-            ),
-          }}
-          variant="outlined"
-        />
+        <SearchBar />
 
         <Box sx={{ display: 'flex', marginTop: '15px' }}>
           <FavoriteButton sx={{ marginRight: '9px' }} variant="contained">
