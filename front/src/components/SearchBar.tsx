@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { styled } from '@mui/material/styles';
-import { Popper, Typography } from '@mui/material';
+import { Divider, Popper, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import GroupsIcon from '@mui/icons-material/Groups';
 import SchoolIcon from '@mui/icons-material/School';
@@ -54,17 +54,17 @@ export default function SearchField() {
       }}
       noOptionsText={
         <Box sx={{ paddingLeft: '14px', display: 'flex', alignItes: 'center' }}>
-          <SentimentVeryDissatisfiedIcon />
+          <SentimentVeryDissatisfiedIcon sx={{ color: '#979797' }} />
           <Typography
             sx={{
-              fontSize: '18px',
+              fontSize: '16px',
               marginLeft: '11px',
               fontWeight: 500,
-              color: '#000000',
+              color: '#979797',
               textAlign: 'center',
             }}
           >
-            Не найдено
+            Ничего не найденно
           </Typography>
         </Box>
       }
@@ -74,22 +74,22 @@ export default function SearchField() {
             <Box
               sx={{ paddingLeft: '14px', display: 'flex', alignItes: 'center' }}
             >
-              {params.group === 'Преподаватели' && <GroupsIcon />}
-              {params.group === 'Аудитории' && <MeetingRoomIcon />}
-              {params.group === 'Группы' && <SchoolIcon />}
               <Typography
                 sx={{
-                  fontSize: '18px',
+                  fontSize: '16px',
                   marginLeft: '11px',
                   fontWeight: 500,
-                  color: '#000000',
+                  color: '#979797',
                   textAlign: 'center',
                 }}
               >
                 {params.group}
               </Typography>
             </Box>
-            {params.children}
+            <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+              {params.children}
+            </Box>
+            <Divider light sx={{ marginTop: '20px', marginBottom: '20px' }} />
           </div>
         );
       }}
