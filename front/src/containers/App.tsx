@@ -8,7 +8,6 @@ import {
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
 import React from 'react';
 
 import { Scrollbars } from 'react-custom-scrollbars';
