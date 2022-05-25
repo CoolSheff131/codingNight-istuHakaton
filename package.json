@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@mui/icons-material": "^5.8.0",
-    "use-react-router-breadcrumbs": "^3.2.1"
-  }
-}
