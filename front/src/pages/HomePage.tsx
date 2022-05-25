@@ -103,348 +103,357 @@ const HomePage = () => {
         backgroundColor: '#8B80F8',
         minHeight: '100vh',
       }} /> */}
-
-      <Container maxWidth="sm">
-        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '21px' }}>
-          <IconButton
-            onClick={() => setState(true)}
-            sx={{ padding: 0, marginRight: '30px' }}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+        }}
+      >
+        <Container maxWidth="sm">
+          <Box
+            sx={{ display: 'flex', alignItems: 'center', marginTop: '21px' }}
           >
-            <MenuIcon sx={{ color: 'white' }} />
-          </IconButton>
-          <SwipeableDrawer
-            anchor={'left'}
-            open={state}
-            onClose={() => setState(false)}
-            onOpen={() => setState(true)}
-            PaperProps={{ sx: { width: '100%', backgroundColor: '#7165E3' } }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                height: '100%',
-                paddingBottom: '30px',
-              }}
+            <IconButton
+              onClick={() => setState(true)}
+              sx={{ padding: 0, marginRight: '30px' }}
+            >
+              <MenuIcon sx={{ color: 'white' }} />
+            </IconButton>
+            <SwipeableDrawer
+              anchor={'left'}
+              open={state}
+              onClose={() => setState(false)}
+              onOpen={() => setState(true)}
+              PaperProps={{ sx: { width: '100%', backgroundColor: '#7165E3' } }}
             >
               <Box
                 sx={{
                   display: 'flex',
-                  alignItems: 'center',
+                  flexDirection: 'column',
                   justifyContent: 'space-between',
-                  paddingRight: '25px',
-                  paddingLeft: '25px',
+                  height: '100%',
+                  paddingBottom: '30px',
                 }}
               >
-                <Typography sx={{ color: 'white' }}>
-                  MommyDoll Schedule
-                </Typography>
-                <IconButton
-                  sx={{ color: 'white' }}
-                  onClick={() => setState(false)}
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingRight: '25px',
+                    paddingLeft: '25px',
+                  }}
                 >
-                  <CloseIcon sx={{ width: '32px', height: '32px' }} />
-                </IconButton>
-              </Box>
-              <Box sx={{ height: '100%' }}>
-                <SwipeableViews
-                  containerStyle={{ height: '100%' }}
-                  slideStyle={{ height: '100%' }}
-                  style={{ height: '100%' }}
-                  disabled
-                  index={drawerSlide}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      height: '100%',
-                      justifyContent: 'space-between',
-                      flexDirection: 'column',
-                    }}
+                  <Typography sx={{ color: 'white' }}>
+                    MommyDoll Schedule
+                  </Typography>
+                  <IconButton
+                    sx={{ color: 'white' }}
+                    onClick={() => setState(false)}
                   >
-                    <Box>
-                      <Button
-                        sx={{
-                          color: 'white',
-                          fontSize: '24px',
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          paddingLeft: '24px',
-                          width: '100%',
-                        }}
-                        startIcon={
-                          <SchoolIcon
-                            sx={{
-                              marginRight: '8px',
-                              width: '32px',
-                              height: '32px',
-                            }}
-                          />
-                        }
-                      >
-                        Группы
-                      </Button>
-                      <Button
-                        sx={{
-                          color: 'white',
-                          fontSize: '24px',
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          paddingLeft: '24px',
-                          width: '100%',
-                        }}
-                        startIcon={
-                          <GroupsIcon
-                            sx={{
-                              marginRight: '8px',
-                              width: '32px',
-                              height: '32px',
-                            }}
-                          />
-                        }
-                      >
-                        Преподаватели
-                      </Button>
-                      <Button
-                        sx={{
-                          color: 'white',
-                          fontSize: '24px',
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          paddingLeft: '24px',
-                          width: '100%',
-                        }}
-                        startIcon={
-                          <MeetingRoomIcon
-                            sx={{
-                              marginRight: '8px',
-                              width: '32px',
-                              height: '32px',
-                            }}
-                          />
-                        }
-                      >
-                        Аудитории
-                      </Button>
-                      <Button
-                        sx={{
-                          color: 'white',
-                          fontSize: '24px',
-                          display: 'flex',
-                          justifyContent: 'flex-start',
-                          paddingLeft: '24px',
-                          width: '100%',
-                        }}
-                        startIcon={
-                          <CalendarTodayIcon
-                            sx={{
-                              marginRight: '8px',
-                              width: '32px',
-                              height: '32px',
-                            }}
-                          />
-                        }
-                      >
-                        Мероприятия
-                      </Button>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <Button
-                        onClick={() => setDrawerSlide(1)}
-                        style={{
-                          color: '#7165E3',
-                          fontSize: '24px',
-                          backgroundColor: 'white',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          textDecoration: 'none',
-                          borderRadius: '6px',
-                          marginLeft: '25px',
-                          marginRight: '25px',
-                          marginBottom: '20px',
-                        }}
-                      >
-                        Вход
-                      </Button>
-                      <NavLink
-                        to={'register'}
-                        style={{
-                          color: 'white',
-                          fontSize: '24px',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          textDecoration: 'undeline',
-                          width: '100%',
-                        }}
-                      >
-                        Регистрация
-                      </NavLink>
-                    </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      height: '100%',
-                      justifyContent: 'space-between',
-                      flexDirection: 'column',
-                    }}
+                    <CloseIcon sx={{ width: '32px', height: '32px' }} />
+                  </IconButton>
+                </Box>
+                <Box sx={{ height: '100%' }}>
+                  <SwipeableViews
+                    containerStyle={{ height: '100%' }}
+                    slideStyle={{ height: '100%' }}
+                    style={{ height: '100%' }}
+                    disabled
+                    index={drawerSlide}
                   >
                     <Box
                       sx={{
-                        marginLeft: '25px',
-                        marginRight: '25px',
                         display: 'flex',
-                        justifyContent: 'center',
+                        height: '100%',
+                        justifyContent: 'space-between',
                         flexDirection: 'column',
                       }}
                     >
-                      <Typography
+                      <Box>
+                        <Button
+                          sx={{
+                            color: 'white',
+                            fontSize: '24px',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            paddingLeft: '24px',
+                            width: '100%',
+                          }}
+                          startIcon={
+                            <SchoolIcon
+                              sx={{
+                                marginRight: '8px',
+                                width: '32px',
+                                height: '32px',
+                              }}
+                            />
+                          }
+                        >
+                          Группы
+                        </Button>
+                        <Button
+                          sx={{
+                            color: 'white',
+                            fontSize: '24px',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            paddingLeft: '24px',
+                            width: '100%',
+                          }}
+                          startIcon={
+                            <GroupsIcon
+                              sx={{
+                                marginRight: '8px',
+                                width: '32px',
+                                height: '32px',
+                              }}
+                            />
+                          }
+                        >
+                          Преподаватели
+                        </Button>
+                        <Button
+                          sx={{
+                            color: 'white',
+                            fontSize: '24px',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            paddingLeft: '24px',
+                            width: '100%',
+                          }}
+                          startIcon={
+                            <MeetingRoomIcon
+                              sx={{
+                                marginRight: '8px',
+                                width: '32px',
+                                height: '32px',
+                              }}
+                            />
+                          }
+                        >
+                          Аудитории
+                        </Button>
+                        <Button
+                          sx={{
+                            color: 'white',
+                            fontSize: '24px',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            paddingLeft: '24px',
+                            width: '100%',
+                          }}
+                          startIcon={
+                            <CalendarTodayIcon
+                              sx={{
+                                marginRight: '8px',
+                                width: '32px',
+                                height: '32px',
+                              }}
+                            />
+                          }
+                        >
+                          Мероприятия
+                        </Button>
+                      </Box>
+                      <Box
                         sx={{
-                          textAlign: 'center',
-                          color: 'white',
-                          fontSize: '32px',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          flexDirection: 'column',
                         }}
                       >
-                        Вход
-                      </Typography>
-                      <input
-                        style={{
-                          backgroundColor: 'white',
-                          borderRadius: '6px',
-                          border: 'none',
-                          outline: 'none',
-                          marginTop: '30px',
-                          fontSize: '24px',
-                          paddingLeft: '20px',
-                          paddingTop: '14px',
-                          paddingBottom: '14px',
-                        }}
-                        placeholder="Логин"
-                        type="text"
-                      />
-                      <input
-                        style={{
-                          backgroundColor: 'white',
-                          borderRadius: '6px',
-                          border: 'none',
-                          outline: 'none',
-                          marginTop: '30px',
-                          fontSize: '24px',
-                          paddingLeft: '20px',
-                          paddingTop: '14px',
-                          paddingBottom: '14px',
-                        }}
-                        placeholder="Пароль"
-                        type="password"
-                      />
-                      <Button
-                        sx={{
-                          '&:hover': { backgroundColor: '#ECD92F' },
-                          marginTop: '40px',
-                          fontSize: '24px',
-                          backgroundColor: '#ECD92F',
-                          color: '#313131',
-                        }}
-                      >
-                        Вход
-                      </Button>
+                        <Button
+                          onClick={() => setDrawerSlide(1)}
+                          style={{
+                            color: '#7165E3',
+                            fontSize: '24px',
+                            backgroundColor: 'white',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            textDecoration: 'none',
+                            borderRadius: '6px',
+                            marginLeft: '25px',
+                            marginRight: '25px',
+                            marginBottom: '20px',
+                          }}
+                        >
+                          Вход
+                        </Button>
+                        <NavLink
+                          to={'register'}
+                          style={{
+                            color: 'white',
+                            fontSize: '24px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            textDecoration: 'undeline',
+                            width: '100%',
+                          }}
+                        >
+                          Регистрация
+                        </NavLink>
+                      </Box>
                     </Box>
                     <Box
                       sx={{
                         display: 'flex',
-                        justifyContent: 'center',
+                        height: '100%',
+                        justifyContent: 'space-between',
                         flexDirection: 'column',
                       }}
                     >
-                      <Button
-                        onClick={() => setDrawerSlide(0)}
-                        style={{
-                          color: 'white',
-                          fontSize: '24px',
-                          backgroundColor: 'transparent',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          textDecoration: 'none',
-                          borderRadius: '6px',
+                      <Box
+                        sx={{
                           marginLeft: '25px',
                           marginRight: '25px',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          flexDirection: 'column',
                         }}
                       >
-                        Назад
-                      </Button>
+                        <Typography
+                          sx={{
+                            textAlign: 'center',
+                            color: 'white',
+                            fontSize: '32px',
+                          }}
+                        >
+                          Вход
+                        </Typography>
+                        <input
+                          style={{
+                            backgroundColor: 'white',
+                            borderRadius: '6px',
+                            border: 'none',
+                            outline: 'none',
+                            marginTop: '30px',
+                            fontSize: '24px',
+                            paddingLeft: '20px',
+                            paddingTop: '14px',
+                            paddingBottom: '14px',
+                          }}
+                          placeholder="Логин"
+                          type="text"
+                        />
+                        <input
+                          style={{
+                            backgroundColor: 'white',
+                            borderRadius: '6px',
+                            border: 'none',
+                            outline: 'none',
+                            marginTop: '30px',
+                            fontSize: '24px',
+                            paddingLeft: '20px',
+                            paddingTop: '14px',
+                            paddingBottom: '14px',
+                          }}
+                          placeholder="Пароль"
+                          type="password"
+                        />
+                        <Button
+                          sx={{
+                            '&:hover': { backgroundColor: '#ECD92F' },
+                            marginTop: '40px',
+                            fontSize: '24px',
+                            backgroundColor: '#ECD92F',
+                            color: '#313131',
+                          }}
+                        >
+                          Вход
+                        </Button>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          flexDirection: 'column',
+                        }}
+                      >
+                        <Button
+                          onClick={() => setDrawerSlide(0)}
+                          style={{
+                            color: 'white',
+                            fontSize: '24px',
+                            backgroundColor: 'transparent',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            textDecoration: 'none',
+                            borderRadius: '6px',
+                            marginLeft: '25px',
+                            marginRight: '25px',
+                          }}
+                        >
+                          Назад
+                        </Button>
+                      </Box>
                     </Box>
-                  </Box>
-                </SwipeableViews>
+                  </SwipeableViews>
+                </Box>
               </Box>
-            </Box>
-          </SwipeableDrawer>
+            </SwipeableDrawer>
+            <Typography
+              variant="h1"
+              component="h2"
+              sx={{ fontSize: 22, color: 'white' }}
+            >
+              Расписание групп
+            </Typography>
+          </Box>
           <Typography
-            variant="h1"
+            variant="h2"
             component="h2"
-            sx={{ fontSize: 22, color: 'white' }}
+            sx={{ fontSize: 16, color: 'white', marginTop: '12px' }}
           >
-            Расписание групп
+            Расписание / Группы
           </Typography>
-        </Box>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ fontSize: 16, color: 'white', marginTop: '12px' }}
-        >
-          Расписание / Группы
-        </Typography>
 
-        <SearchBar />
+          <SearchBar />
 
-        <Box sx={{ display: 'flex', marginTop: '15px' }}>
-          <FavoriteButton
-            onClick={() => navigate('/schedule')}
-            sx={{ marginRight: '9px' }}
-            variant="contained"
-          >
-            ИСТб-19-1
-          </FavoriteButton>
-          <FavoriteButton
-            onClick={() => navigate('/schedule')}
-            sx={{ marginRight: '9px' }}
-            variant="contained"
-          >
-            ЭВМб-19-1
-          </FavoriteButton>
-        </Box>
+          <Box sx={{ display: 'flex', marginTop: '15px' }}>
+            <FavoriteButton
+              onClick={() => navigate('/schedule')}
+              sx={{ marginRight: '9px' }}
+              variant="contained"
+            >
+              ИСТб-19-1
+            </FavoriteButton>
+            <FavoriteButton
+              onClick={() => navigate('/schedule')}
+              sx={{ marginRight: '9px' }}
+              variant="contained"
+            >
+              ЭВМб-19-1
+            </FavoriteButton>
+          </Box>
 
-        <Calendar />
-        <StyledTabs value={value} onChange={handleChange}>
-          <StyledTab label="Группы" onClick={() => navigate('group')} />
+          <Calendar />
+          <StyledTabs value={value} onChange={handleChange}>
+            <StyledTab label="Группы" onClick={() => navigate('group')} />
 
-          <StyledTab
-            label="Преподаватели"
-            onClick={() => navigate('teacher')}
-          />
+            <StyledTab
+              label="Преподаватели"
+              onClick={() => navigate('teacher')}
+            />
 
-          <StyledTab label="Аудитории" onClick={() => navigate('auditory')} />
+            <StyledTab label="Аудитории" onClick={() => navigate('auditory')} />
 
-          <StyledTab label="Мероприятия" onClick={() => navigate('event')} />
-        </StyledTabs>
-      </Container>
-      <Box
-        sx={{
-          flex: 1,
-          backgroundColor: '#F4F5FA',
-          marginTop: '21px',
-          borderRadius: '20px 20px 0 0',
-        }}
-      >
-        <Container maxWidth="sm">
-          <Outlet />
+            <StyledTab label="Мероприятия" onClick={() => navigate('event')} />
+          </StyledTabs>
         </Container>
+        <Box
+          sx={{
+            flex: 1,
+            backgroundColor: '#F4F5FA',
+            marginTop: '21px',
+            borderRadius: '20px 20px 0 0',
+          }}
+        >
+          <Container maxWidth="sm" sx={{ paddingTop: '20px' }}>
+            <Outlet />
+          </Container>
+        </Box>
       </Box>
     </Scrollbars>
   );

@@ -96,8 +96,6 @@ export default function SearchField() {
         return <Button key={option.id}>{option.key}</Button>;
       }}
       PopperComponent={(PopperOptions: any) => {
-        console.log(PopperOptions);
-
         return (
           <Popper
             style={{
