@@ -2,13 +2,10 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { styled } from '@mui/material/styles';
-import { Button, Divider, Popover, Popper, Typography } from '@mui/material';
+import { Button, Divider, Popper, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import GroupsIcon from '@mui/icons-material/Groups';
-import SchoolIcon from '@mui/icons-material/School';
-import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import { Scrollbars } from 'react-custom-scrollbars';
+
 const CssTextField = styled(TextField)({
   '&': {
     backgroundColor: 'white',

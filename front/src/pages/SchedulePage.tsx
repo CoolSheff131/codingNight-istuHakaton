@@ -1,84 +1,16 @@
-import { Box, Button, Container, IconButton, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Box, Container } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 import React from 'react';
-import { styled } from '@mui/material/styles';
 import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
 import ScheduleItem, { Type } from '../components/ScheduleItem';
 import Break from '../components/Break';
-import { NavLink } from 'react-router-dom';
-import FavoriteButton from '../components/FavoriteButton';
 
 const SchedulePage = () => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: '#8B80F8',
-        height: '100vh',
-      }}
-    >
+    <>
       <Container maxWidth="sm">
-        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '21px' }}>
-          <IconButton sx={{ padding: 0, marginRight: '30px' }}>
-            <MenuIcon sx={{ color: 'white' }} />
-          </IconButton>
-          <Typography
-            variant="h1"
-            component="h2"
-            sx={{ fontSize: 22, color: 'white' }}
-          >
-            Расписание групп
-          </Typography>
-        </Box>
-        <Box sx={{ display: 'flex' }}>
-          <NavLink to={'/'} style={{ textDecoration: 'none' }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: 16,
-                color: 'white',
-                marginRight: '5px',
-                marginTop: '12px',
-              }}
-            >
-              Главная /
-            </Typography>
-          </NavLink>
-          <NavLink to={'/group'} style={{ textDecoration: 'none' }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: 16,
-                color: 'white',
-                marginTop: '12px',
-                marginRight: '5px',
-              }}
-            >
-              Группы
-            </Typography>
-          </NavLink>
-        </Box>
-
         <SearchBar />
-
-        <Box sx={{ display: 'flex', marginTop: '15px' }}>
-          <FavoriteButton sx={{ marginRight: '9px' }} variant="contained">
-            ИСТб-19-1
-          </FavoriteButton>
-          <FavoriteButton sx={{ marginRight: '9px' }} variant="contained">
-            ЭВМб-19-1
-          </FavoriteButton>
-        </Box>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ fontSize: 40, color: 'white', marginTop: '15px' }}
-        >
-          АД-211
-        </Typography>
         <Calendar />
       </Container>
       <Box
@@ -113,7 +45,7 @@ const SchedulePage = () => {
           </Box>
         </Container>
       </Box>
-    </Box>
+    </>
   );
 };
 

@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import ColorButton from './ColorButton';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const GroupTab = () => {

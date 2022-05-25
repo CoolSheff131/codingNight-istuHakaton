@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import AuditoryTab from '../components/AuditoryTab';
 import EventTab from '../components/EventTab';
 import GroupTab from '../components/GroupTab';
@@ -9,20 +9,18 @@ import SchedulePage from '../pages/SchedulePage';
 import ScheduleTeacherPage from '../pages/ScheduleTeacherPage';
 
 const Router = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />}>
-        <Route path="group" element={<GroupTab />} />
-        <Route path="teacher" element={<TeacherTab />} />
-        <Route path="auditory" element={<AuditoryTab />} />
-        <Route path="event" element={<EventTab />} />
-      </Route>
-      <Route path="/group/:id" element={<SchedulePage />} />
-      <Route path="/teacher/:id" element={<ScheduleTeacherPage />} />
-      <Route path="/auditory/:id" element={<ScheduleAuditoryPage />} />
-      {/* <Route path="/event/:id" element={<SchedulePage />} /> */}
-    </Routes>
-  </BrowserRouter>
+  <Routes>
+    <Route path="/" element={<HomePage />}>
+      <Route path="group" element={<GroupTab />} />
+      <Route path="teacher" element={<TeacherTab />} />
+      <Route path="auditory" element={<AuditoryTab />} />
+      <Route path="event" element={<EventTab />} />
+    </Route>
+    <Route path="/group/:id" element={<SchedulePage />} />
+    <Route path="/teacher/:id" element={<ScheduleTeacherPage />} />
+    <Route path="/auditory/:id" element={<ScheduleAuditoryPage />} />
+    {/* <Route path="/event/:id" element={<SchedulePage />} /> */}
+  </Routes>
 );
 
 export default Router;
