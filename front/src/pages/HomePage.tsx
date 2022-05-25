@@ -23,6 +23,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import SwipeableViews from 'react-swipeable-views';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 interface StyledTabProps {
   label: string;
@@ -56,8 +57,6 @@ interface StyledTabsProps {
 const StyledTabs = styled((props: StyledTabsProps) => (
   <Tabs
     {...props}
-    scrollButtons
-    allowScrollButtonsMobile
     variant="scrollable"
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
@@ -94,14 +93,17 @@ const HomePage = () => {
   const [drawerSlide, setDrawerSlide] = React.useState(0);
 
   return (
-    <Box
-      sx={{
+    <Scrollbars
+      //renderView={() => <Box sx={{ height: '100vh' }} />}
+      style={{ minHeight: '100vh', backgroundColor: '#8B80F8' }}
+    >
+      {/* <Box sx={{
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#8B80F8',
-        height: '100vh',
-      }}
-    >
+        minHeight: '100vh',
+      }} /> */}
+
       <Container maxWidth="sm">
         <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '21px' }}>
           <IconButton
@@ -444,7 +446,7 @@ const HomePage = () => {
           <Outlet />
         </Container>
       </Box>
-    </Box>
+    </Scrollbars>
   );
 };
 
