@@ -20,6 +20,9 @@ export class AuditoryEntity {
   @Column()
   floor: number;
 
+  @Column()
+  name: string;
+
   // RELATIONS
   @ManyToMany(() => EventEntity, (event: EventEntity) => event.auditories)
   public events: EventEntity[];

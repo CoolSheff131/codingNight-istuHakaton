@@ -24,7 +24,7 @@ export class Api extends IApi {
     return this.axios.get<Auditory[]>('/auditory').then((data) => data.data);
   }
   async getAllTeachers(): Promise<Teacher[]> {
-    return this.axios.get<Teacher[]>('/teacher').then((data) => data.data);
+    return this.axios.get<Teacher[]>('/teachers').then((data) => data.data);
   }
 
   async getWeek(weekBeginingDate: string): Promise<Week> {

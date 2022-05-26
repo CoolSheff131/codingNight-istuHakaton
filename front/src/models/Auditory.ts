@@ -1,4 +1,8 @@
+import { Corpus } from './Corpus';
+
 export interface Auditory {
   id: number;
-  name: string;
+  floor: number;
+  number: number;
+  corpus: Corpus;
 }

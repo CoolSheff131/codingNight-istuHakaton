@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
 import { UpdateTeacherDto } from './dto/update-teacher.dto';
+import { TeacherEntity } from './entities/teacher.entity';
 
 @Injectable()
 export class TeachersService {
+  constructor(
+    @InjectRepository(TeacherEntity)
+    private teacherRepository: Repository<TeacherEntity>,
+  ) {}
+
   create(createTeacherDto: CreateTeacherDto) {
     return 'This action adds a new teacher';
   }
 
   findAll() {
-    return `This action returns all teachers`;
+    return this.teacherRepository.find();
   }
 
   findOne(id: number) {

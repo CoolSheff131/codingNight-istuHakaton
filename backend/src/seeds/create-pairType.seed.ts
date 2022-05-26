@@ -119,33 +119,43 @@ export default class CreatePairType implements Seeder {
     console.log('GROUPS CREATED');
 
     const corpus1 = await factory(CorpusEntity)().create({
-      name: 'Обсерватория',
+      name: 'Корпус А', //'Обсерватория',
     });
-    const corpus2 = await factory(CorpusEntity)().create({
-      name: 'Зимний сад',
-    });
-    const corpus3 = await factory(CorpusEntity)().create({
-      name: 'Грот',
-    });
-    const corpus4 = await factory(CorpusEntity)().create({
-      name: 'Чердак',
-    });
-    const corpus5 = await factory(CorpusEntity)().create({
-      name: 'Танцплощадка',
-    });
-    const corpus6 = await factory(CorpusEntity)().create({
-      name: 'У кустов сирени',
-    });
-    const allCorps = [corpus1, corpus2, corpus3, corpus4, corpus5, corpus6];
+    // const corpus2 = await factory(CorpusEntity)().create({
+    //   name: 'Зимний сад',
+    // });
+    // const corpus3 = await factory(CorpusEntity)().create({
+    //   name: 'Грот',
+    // });
+    // const corpus4 = await factory(CorpusEntity)().create({
+    //   name: 'Чердак',
+    // });
+    // const corpus5 = await factory(CorpusEntity)().create({
+    //   name: 'Танцплощадка',
+    // });
+    // const corpus6 = await factory(CorpusEntity)().create({
+    //   name: 'У кустов сирени',
+    // });
+    const allCorps = [corpus1]; //, corpus2, corpus3, corpus4, corpus5, corpus6];
     console.log('CORPS CREATED');
+    const auditoryName = [
+      'Обсерватория',
+      'Зимний сад',
+      'Грот',
+      'Танцплощадка',
+      'У кустов сирени',
+    ];
 
     const allAuditories = [];
-    for (let i = 0; i < 10; i++) {
+    let number = 0;
+    for (const name in auditoryName) {
       const auditory = await factory(AuditoryEntity)().create({
         floor: 0,
         corpus: allCorps[Math.floor(Math.random() * allCorps.length)],
-        number: i,
+        number,
+        name,
       });
+      number++;
       allAuditories.push(auditory);
     }
     console.log('AUDITORIES CREATED');
