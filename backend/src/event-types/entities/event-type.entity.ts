@@ -1,5 +1,5 @@
-import { AuditoryEntity } from 'src/auditories/entities/auditory.entity';
-import { EventEntity } from 'src/events/entities/event.entity';
+import { AuditoryEntity } from '../../auditories/entities/auditory.entity';
+import { EventEntity } from '../../events/entities/event.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

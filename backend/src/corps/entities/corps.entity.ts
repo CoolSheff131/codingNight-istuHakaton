@@ -1,4 +1,4 @@
-import { AuditoryEntity } from 'src/auditories/entities/auditory.entity';
+import { AuditoryEntity } from '../../auditories/entities/auditory.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

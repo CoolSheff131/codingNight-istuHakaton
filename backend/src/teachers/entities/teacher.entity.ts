@@ -1,5 +1,5 @@
-import { EventEntity } from 'src/events/entities/event.entity';
-import { PairEntity } from 'src/pairs/entities/pair.entity';
+import { EventEntity } from '../../events/entities/event.entity';
+import { PairEntity } from '../../pairs/entities/pair.entity';
 import {
   Column,
   Entity,

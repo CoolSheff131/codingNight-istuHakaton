@@ -1,8 +1,8 @@
-import { AuditoryEntity } from 'src/auditories/entities/auditory.entity';
-import { EventTypeEntity } from 'src/event-types/entities/event-type.entity';
-import { GroupEntity } from 'src/groups/entities/group.entity';
-import { PairEntity } from 'src/pairs/entities/pair.entity';
-import { TeacherEntity } from 'src/teachers/entities/teacher.entity';
+import { AuditoryEntity } from '../../auditories/entities/auditory.entity';
+import { EventTypeEntity } from '../../event-types/entities/event-type.entity';
+import { GroupEntity } from '../../groups/entities/group.entity';
+import { PairEntity } from '../../pairs/entities/pair.entity';
+import { TeacherEntity } from '../../teachers/entities/teacher.entity';
 import {
   Column,
   Entity,
@@ -27,6 +27,8 @@ export class EventEntity {
   description: string;
   @Column()
   pairNumber: number;
+  @Column('int', { array: true, nullable: true })
+  relatedQueriesIds: number[];
 
   // RELATIONS
   @ManyToMany(
@@ -34,7 +36,7 @@ export class EventEntity {
     (auditory: AuditoryEntity) => auditory.events,
   )
   @JoinTable()
-  public auditories: GroupEntity[];
+  public auditories: AuditoryEntity[];
 
   @ManyToMany(() => GroupEntity, (group: GroupEntity) => group.events)
   @JoinTable()

@@ -1,6 +1,6 @@
-import { DisciplineEntity } from 'src/disciplines/entities/discipline.entity';
-import { StudentEntity } from 'src/students/entities/student.entity';
-import { WorkEntity } from 'src/works/entities/work.entity';
+import { DisciplineEntity } from '../../disciplines/entities/discipline.entity';
+import { StudentEntity } from '../../students/entities/student.entity';
+import { WorkEntity } from '../../works/entities/work.entity';
 import {
   Column,
   Entity,

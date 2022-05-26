@@ -1,9 +1,11 @@
-import { PairEntity } from 'src/pairs/entities/pair.entity';
-import { StudentWorkAnswerEntity } from 'src/student-work-answer/entities/student-work-answer.entity';
+import { PairEntity } from '../../pairs/entities/pair.entity';
+import { StudentWorkAnswerEntity } from '../../student-work-answer/entities/student-work-answer.entity';
+import { GroupEntity } from '../../groups/entities/group.entity';
 import {
   Column,
   Entity,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -25,10 +27,10 @@ export class StudentEntity {
   login: string;
   @Column()
   password: string;
-  @Column()
-  is_Starosta: boolean;
-  @Column()
-  subgroup_number: number;
+  @Column({ default: false })
+  isStarosta: boolean;
+  @Column({ default: 1 })
+  subgroupNumber: number;
   @Column()
   avatar_url: string;
 
@@ -41,4 +43,7 @@ export class StudentEntity {
     (studentWorkAnswer: StudentWorkAnswerEntity) => studentWorkAnswer.student,
   )
   public studentWorkAnswers: StudentWorkAnswerEntity[];
+
+  @ManyToOne(() => GroupEntity, (group: GroupEntity) => group.students)
+  public group: GroupEntity;
 }

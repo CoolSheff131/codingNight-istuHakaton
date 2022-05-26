@@ -1,5 +1,5 @@
-import { DisciplineEntity } from 'src/disciplines/entities/discipline.entity';
-import { StudentWorkAnswerEntity } from 'src/student-work-answer/entities/student-work-answer.entity';
+import { DisciplineEntity } from '../../disciplines/entities/discipline.entity';
+import { StudentWorkAnswerEntity } from '../../student-work-answer/entities/student-work-answer.entity';
 import {
   Column,
   Entity,

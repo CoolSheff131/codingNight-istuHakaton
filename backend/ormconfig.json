@@ -1,0 +1,12 @@
+{
+    "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "texteditor",
+  "password": "texteditor",
+  "database": "schedule",
+  "entities": ["src/**/*.entity{.ts,.js}"],
+  "synchronize": true,
+  "seeds": ["src/seeds/**/*{.ts,.js}"],
+  "factories": ["src/factories/**/*{.ts,.js}"]
+}

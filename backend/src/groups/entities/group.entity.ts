@@ -1,11 +1,15 @@
-import { AuditoryEntity } from 'src/auditories/entities/auditory.entity';
-import { DisciplineEntity } from 'src/disciplines/entities/discipline.entity';
-import { EventEntity } from 'src/events/entities/event.entity';
-import { PairEntity } from 'src/pairs/entities/pair.entity';
+import { AuditoryEntity } from '../../auditories/entities/auditory.entity';
+import { DisciplineEntity } from '../../disciplines/entities/discipline.entity';
+import { EventEntity } from '../../events/entities/event.entity';
+import { PairEntity } from '../../pairs/entities/pair.entity';
+import { InstituteEntity } from '../../institutes/entities/institute.entity';
+import { StudentEntity } from '../../students/entities/student.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -22,14 +26,22 @@ export class GroupEntity {
     () => DisciplineEntity,
     (discipline: DisciplineEntity) => discipline.groups,
   )
+  @JoinTable()
   public disciplines: DisciplineEntity[];
 
   @ManyToMany(() => EventEntity, (event: EventEntity) => event.groups)
+  @JoinTable()
   public events: EventEntity[];
 
   @ManyToMany(() => PairEntity, (pair: PairEntity) => pair.groups)
   public pairs: PairEntity[];
 
-  @OneToMany(() => AuditoryEntity, (post: AuditoryEntity) => post.corpus)
-  public auditories: AuditoryEntity[];
+  @ManyToOne(
+    () => InstituteEntity,
+    (institute: InstituteEntity) => institute.groups,
+  )
+  public institute: InstituteEntity;
+
+  @OneToMany(() => StudentEntity, (student: StudentEntity) => student.group)
+  public students: StudentEntity[];
 }

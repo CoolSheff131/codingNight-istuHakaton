@@ -1,10 +1,10 @@
-import { AuditoryEntity } from 'src/auditories/entities/auditory.entity';
-import { DisciplineEntity } from 'src/disciplines/entities/discipline.entity';
-import { GroupEntity } from 'src/groups/entities/group.entity';
-import { PairTypeEntity } from 'src/pair-types/entities/pair-type.entity';
-import { StudentEntity } from 'src/students/entities/student.entity';
-import { TeacherEntity } from 'src/teachers/entities/teacher.entity';
-import { WorkEntity } from 'src/works/entities/work.entity';
+import { AuditoryEntity } from '../../auditories/entities/auditory.entity';
+import { DisciplineEntity } from '../../disciplines/entities/discipline.entity';
+import { GroupEntity } from '../../groups/entities/group.entity';
+import { PairTypeEntity } from '../../pair-types/entities/pair-type.entity';
+import { StudentEntity } from '../../students/entities/student.entity';
+import { TeacherEntity } from '../../teachers/entities/teacher.entity';
+import { WorkEntity } from '../../works/entities/work.entity';
 import {
   Column,
   Entity,
@@ -25,7 +25,7 @@ export class PairEntity {
   pairNumber: number;
   @Column()
   dayNumber: number;
-  @Column()
+  @Column({ default: 3 })
   subGroupNumber: number;
 
   @Column()
@@ -40,8 +40,7 @@ export class PairEntity {
     () => AuditoryEntity,
     (auditory: AuditoryEntity) => auditory.pairs,
   )
-  @JoinTable()
-  public auditories: GroupEntity[];
+  public auditories: AuditoryEntity[];
 
   @ManyToMany(() => GroupEntity, (group: GroupEntity) => group.pairs)
   @JoinTable()

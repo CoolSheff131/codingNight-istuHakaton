@@ -1,9 +1,10 @@
-import { CorpusEntity } from 'src/corps/entities/corps.entity';
-import { EventEntity } from 'src/events/entities/event.entity';
-import { PairEntity } from 'src/pairs/entities/pair.entity';
+import { CorpusEntity } from '../../corps/entities/corps.entity';
+import { EventEntity } from '../../events/entities/event.entity';
+import { PairEntity } from '../../pairs/entities/pair.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -22,8 +23,11 @@ export class AuditoryEntity {
   // RELATIONS
   @ManyToMany(() => EventEntity, (event: EventEntity) => event.auditories)
   public events: EventEntity[];
+
   @ManyToMany(() => PairEntity, (pair: PairEntity) => pair.auditories)
+  @JoinTable()
   public pairs: PairEntity[];
+
   @ManyToOne(() => CorpusEntity, (corpus: CorpusEntity) => corpus.auditories)
   public corpus: CorpusEntity;
 }

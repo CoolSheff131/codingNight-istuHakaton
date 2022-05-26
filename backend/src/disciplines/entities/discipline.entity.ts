@@ -1,9 +1,10 @@
-import { GroupEntity } from 'src/groups/entities/group.entity';
-import { PairEntity } from 'src/pairs/entities/pair.entity';
-import { WorkEntity } from 'src/works/entities/work.entity';
+import { GroupEntity } from '../../groups/entities/group.entity';
+import { PairEntity } from '../../pairs/entities/pair.entity';
+import { WorkEntity } from '../../works/entities/work.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
