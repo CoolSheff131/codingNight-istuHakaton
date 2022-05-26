@@ -31,7 +31,7 @@ const SchedulePage = () => {
       case 'teacher': ApiInstance.getTeacher(id!).then(teacher => { setTitle(teacher.surname); setIsLoadingTitle(false) }); break;
       default: ApiInstance.getAuditory(id!).then(auditory => { setTitle(auditory.name); setIsLoadingTitle(false) });
     }
-  }, [])
+  }, [type])
 
   React.useEffect(() => {
     setIsLoadingPairList(true)
@@ -56,7 +56,7 @@ const SchedulePage = () => {
 
       setIsPairListEmpty(isEmpty)
     })
-  }, [dayDate])
+  }, [dayDate, id, type])
 
   return (
     <>

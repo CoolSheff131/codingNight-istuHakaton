@@ -7,6 +7,7 @@ import { Discipline } from '../models/Descipline';
 import { PairNumber } from '../models/PairNumber';
 import { PairType } from '../models/PairType';
 import { Teacher } from '../models/Teacher';
+import { NavLink } from 'react-router-dom';
 
 export enum Type {
   type1,
@@ -64,19 +65,30 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
         {discipline.name}
       </Typography>
       <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
-        {teachers.map(teacher => <Typography
-          key={teacher.id}
-          sx={{
-            marginRight: '5px',
-            fontSize: '14px',
-            fontWeight: 400,
-            fontFamily: 'Mont',
-            fontStyle: 'italic',
-            marginTop: '5px',
-          }}
-        >
-          {teacher.surname}
-        </Typography>)}
+        {teachers.map(teacher => (
+          <NavLink
+            key={teacher.id}
+            to={`/schedule/teacher/${teacher.id}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <Typography
+
+              sx={{
+                marginRight: '5px',
+                fontSize: '14px',
+                fontWeight: 400,
+                fontFamily: 'Mont',
+                fontStyle: 'italic',
+                marginTop: '5px',
+                color: '#313131',
+              }}
+            >
+              {teacher.surname}
+            </Typography>
+          </NavLink>
+        )
+
+        )}
       </Box>
 
       <Box
@@ -88,25 +100,33 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
       >
         <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
           {
+
             auditories.map((auditory) => (
-              <Typography
+              <NavLink
                 key={auditory.id}
-                sx={{
-                  marginTop: '5px',
-                  marginRight: '5px',
-                  paddingLeft: '7px',
-                  paddingRight: '7px',
-                  borderRadius: '5px',
-                  backgroundColor: '#7165E3',
-                  height: '20px',
-                  color: 'white',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  fontFamily: 'Mont',
-                }}
+                to={`/schedule/auditory/${auditory.id}`}
+                style={{ textDecoration: 'none' }}
               >
-                {auditory.name}
-              </Typography>
+                <Typography
+
+                  sx={{
+                    marginTop: '5px',
+                    marginRight: '5px',
+                    paddingLeft: '7px',
+                    paddingRight: '7px',
+                    borderRadius: '5px',
+                    backgroundColor: '#7165E3',
+                    height: '20px',
+                    color: 'white',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    fontFamily: 'Mont',
+                  }}
+                >
+                  {auditory.name}
+                </Typography>
+              </NavLink>
+
             ))
           }
 
@@ -114,18 +134,24 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
         <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
           {
             groups.map(group => (
-              <Typography
+              <NavLink
                 key={group.id}
-                sx={{
-                  color: '#3B3D48',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  marginRight: '5px',
-                  fontFamily: 'Mont',
-                }}
+                to={`/schedule/groups/${group.id}`}
+                style={{ textDecoration: 'none' }}
               >
-                {group.name}
-              </Typography>
+                <Typography
+                  sx={{
+                    color: '#3B3D48',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    marginRight: '5px',
+                    fontFamily: 'Mont',
+                  }}
+                >
+                  {group.name}
+                </Typography>
+              </NavLink>
+
             ))
           }
         </Box>

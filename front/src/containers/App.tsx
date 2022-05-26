@@ -13,9 +13,11 @@ import { NavLink } from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 import SideMenu from '../components/SideMenu';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
   const [isSideMenuOpen, setIsSideMenuOpen] = React.useState(false);
+  const location = useLocation();
 
   return (
     <div>
@@ -46,13 +48,18 @@ const App = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography
-                variant="h1"
-                component="h2"
-                sx={{ fontSize: 22, color: 'white', fontFamily: 'Mont', fontWeight: 600 }}
+              <NavLink
+                to={`/group`}
+                style={{ textDecoration: 'none' }}
               >
-                Расписание групп
-              </Typography>
+                <Typography
+                  variant="h1"
+                  component="h2"
+                  sx={{ fontSize: 22, color: 'white', fontFamily: 'Mont', fontWeight: 600 }}
+                >
+                  Расписание
+                </Typography>
+              </NavLink>
               <IconButton onClick={() => setIsSideMenuOpen(true)} sx={{ padding: 0 }}>
                 <MenuIcon sx={{ color: 'white' }} />
               </IconButton>
@@ -62,7 +69,7 @@ const App = () => {
                 onOpen={() => setIsSideMenuOpen(true)}
               />
             </Box>
-            <NavLink
+            {/* <NavLink
               to={`/group`}
               style={{ textDecoration: 'none' }}
             >
@@ -72,9 +79,12 @@ const App = () => {
 
                 sx={{ cursor: 'pointer', fontSize: 16, fontFamily: 'Mont', color: 'white', marginTop: '12px' }}
               >
-                Расписание / Группы
+                {
+                  location.pathname
+                }
+
               </Typography>
-            </NavLink>
+            </NavLink> */}
 
           </Container>
           <Router />

@@ -103,14 +103,14 @@ const GroupTab = () => {
               Object.entries(groupList).map(([key, value]) => {
                 const groupsCount = (value as any[]).length
                 if (groupsCount > 0)
-                  return <Accordion sx={{ borderRadius: '5px', marginBottom: '9px' }}>
+                  return <Accordion key={key} sx={{ borderRadius: '5px', marginBottom: '9px' }}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
                       <Typography sx={{ color: '#3B3D48', fontSize: '18px' }}>
-                        {`${key} курс'`}
+                        {`${key} курс`}
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
