@@ -49,7 +49,7 @@ const App = () => {
               <Typography
                 variant="h1"
                 component="h2"
-                sx={{ fontSize: 22, color: 'white' }}
+                sx={{ fontSize: 22, color: 'white', fontFamily: 'Mont', fontWeight: 600 }}
               >
                 Расписание групп
               </Typography>
@@ -70,7 +70,7 @@ const App = () => {
                 variant="h2"
                 component="h2"
 
-                sx={{ cursor: 'pointer', fontSize: 16, color: 'white', marginTop: '12px' }}
+                sx={{ cursor: 'pointer', fontSize: 16, fontFamily: 'Mont', color: 'white', marginTop: '12px' }}
               >
                 Расписание / Группы
               </Typography>

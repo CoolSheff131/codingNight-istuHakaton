@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import App from './containers/App';
 import { BrowserRouter } from 'react-router-dom';
+import './assets/index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

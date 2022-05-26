@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 import React from 'react';
 import Calendar from '../components/Calendar';
@@ -10,17 +10,19 @@ import { Pair } from '../models/Pair';
 import { ApiInstance } from '../api/Api';
 import NewCalendar from '../components/NewCalendar';
 import { useNavigate, useParams } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const SchedulePage = () => {
   const [pairList, setPairList] = React.useState<PairList | null>(null)
   const [dayDate, setValue] = React.useState(new Date());
+  const [isPairListEmpty, setIsPairListEmpty] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
   let { type, id } = useParams();
   const myChange = (ev: any) => {
-    console.log(ev);
     setValue(ev.value); // ev.value is a Moment object
   }
   React.useEffect(() => {
-    console.log(type);
+    setIsLoading(true)
 
     let promise: Promise<PairList>
     switch (type) {
@@ -30,9 +32,19 @@ const SchedulePage = () => {
     }
     promise.then((pairListApi) => {//'2022-05-26'
       setPairList(pairListApi)
-      console.log('====================================');
-      console.log(pairListApi);
-      console.log('====================================');
+      setIsLoading(false)
+      let isEmpty = true
+      for (const [key, value] of Object.entries(pairListApi)) {
+        const pairCount = (value as any[]).length
+        console.log(pairCount);
+
+        if (pairCount > 0) {
+          isEmpty = false
+          break
+        }
+      }
+
+      setIsPairListEmpty(isEmpty)
     })
   }, [dayDate])
 
@@ -56,8 +68,21 @@ const SchedulePage = () => {
           maxWidth="sm"
           sx={{ paddingTop: '25px', paddingBottom: '25px' }}
         >
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            {
+              !isLoading && isPairListEmpty && (
+                <Typography sx={{ color: '#313131', fontSize: '28px' }}>
+                  Пар нет!
+                </Typography>
+              )
+            }
+            {isLoading && (
+              <CircularProgress />
+
+            )}
+          </Box>
           {
-            pairList !== null &&
+            pairList !== null && !isLoading &&
             Object.entries(pairList).map(([key, value]) => {
               const pairCount = (value as any[]).length
               if (pairCount > 0)

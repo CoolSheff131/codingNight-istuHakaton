@@ -55,7 +55,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
             paddingLeft: '25px',
           }}
         >
-          <Typography sx={{ color: 'white' }}>MommyDoll Schedule</Typography>
+          <Typography sx={{ color: 'white', fontFamily: 'Mont', }}>MommyDoll Schedule</Typography>
           <IconButton sx={{ color: 'white' }} onClick={handleClose}>
             <CloseIcon sx={{ width: '32px', height: '32px' }} />
           </IconButton>
@@ -85,6 +85,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     justifyContent: 'flex-start',
                     paddingLeft: '24px',
                     width: '100%',
+                    textTransform: 'none'
                   }}
                   startIcon={
                     <SchoolIcon
@@ -109,6 +110,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     justifyContent: 'flex-start',
                     paddingLeft: '24px',
                     width: '100%',
+                    fontFamily: 'Mont',
+                    textTransform: 'none'
                   }}
                   startIcon={
                     <GroupsIcon
@@ -132,7 +135,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     display: 'flex',
                     justifyContent: 'flex-start',
                     paddingLeft: '24px',
+                    fontFamily: 'Mont',
                     width: '100%',
+                    textTransform: 'none'
                   }}
                   startIcon={
                     <MeetingRoomIcon
@@ -157,6 +162,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     justifyContent: 'flex-start',
                     paddingLeft: '24px',
                     width: '100%',
+                    fontFamily: 'Mont',
+                    textTransform: 'none'
                   }}
                   startIcon={
                     <CalendarTodayIcon
@@ -194,6 +201,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     marginLeft: '25px',
                     marginRight: '25px',
                     marginBottom: '20px',
+                    fontFamily: 'Mont',
+                    textTransform: 'none'
                   }}
                 >
                   Вход
@@ -222,6 +231,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     textAlign: 'center',
                     color: 'white',
                     fontSize: '32px',
+                    fontFamily: 'Mont',
                   }}
                 >
                   Вход
@@ -263,6 +273,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     fontSize: '24px',
                     backgroundColor: '#ECD92F',
                     color: '#313131',
+                    textTransform: 'none'
                   }}
                 >
                   Вход
@@ -287,6 +298,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     borderRadius: '6px',
                     marginLeft: '25px',
                     marginRight: '25px',
+
                   }}
                 >
                   Назад

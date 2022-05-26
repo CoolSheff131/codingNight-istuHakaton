@@ -58,6 +58,7 @@ export default function SearchField() {
               fontWeight: 500,
               color: '#979797',
               textAlign: 'center',
+              fontFamily: 'Mont',
             }}
           >
             Ничего не найденно
@@ -77,6 +78,7 @@ export default function SearchField() {
                   fontWeight: 500,
                   color: '#979797',
                   textAlign: 'center',
+                  fontFamily: 'Mont',
                 }}
               >
                 {params.group}

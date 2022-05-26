@@ -49,11 +49,12 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
               height: '24px',
               textAlign: 'center',
               color: 'white',
+              fontFamily: 'Mont',
             }}
           >
             {pairNumber}
           </Box>
-          <Typography sx={{ marginLeft: '17px', fontSize: '16px' }}>
+          <Typography sx={{ marginLeft: '17px', fontSize: '16px', fontFamily: 'Mont', }}>
             Лекция
           </Typography>
         </Box>
@@ -68,6 +69,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
             marginRight: '5px',
             fontSize: '14px',
             fontWeight: 400,
+            fontFamily: 'Mont',
             fontStyle: 'italic',
             marginTop: '5px',
           }}
@@ -97,6 +99,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
                   color: 'white',
                   fontSize: '14px',
                   fontWeight: 500,
+                  fontFamily: 'Mont',
                 }}
               >
                 {auditory.name}
@@ -114,6 +117,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
                   fontSize: '14px',
                   fontWeight: 500,
                   marginRight: '5px',
+                  fontFamily: 'Mont',
                 }}
               >
                 {group.name}
@@ -130,6 +134,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
               fontSize: '14px',
               fontWeight: 500,
               marginRight: '5px',
+              fontFamily: 'Mont',
             }}
           >
             {`подгруппа ${subGroupNumber}`}
@@ -154,6 +159,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
                         fontSize: '12px',
                         fontWeight: 400,
                         marginLeft: '11px',
+                        fontFamily: 'Mont',
                       }}
                     >
                       Несколько предметов в это время
