@@ -25,9 +25,14 @@ export class GroupsController {
     return this.groupsService.findAll();
   }
 
-  @Get(':instituteId')
-  findOne(@Param('instituteId') instituteId: string) {
+  @Get('institute/:instituteId')
+  findByInstitute(@Param('instituteId') instituteId: string) {
     return this.groupsService.findByInstitute(instituteId);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.groupsService.findOne(+id);
   }
 
   @Patch(':id')

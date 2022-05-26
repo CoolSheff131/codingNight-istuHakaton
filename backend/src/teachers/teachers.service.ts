@@ -21,7 +21,7 @@ export class TeachersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} teacher`;
+    return this.teacherRepository.findOneBy({ id });
   }
 
   update(id: number, updateTeacherDto: UpdateTeacherDto) {

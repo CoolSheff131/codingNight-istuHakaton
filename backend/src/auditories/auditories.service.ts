@@ -21,7 +21,7 @@ export class AuditoriesService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} auditory`;
+    return this.auditoryRepository.findOneBy({ id });
   }
 
   update(id: number, updateAuditoryDto: UpdateAuditoryDto) {

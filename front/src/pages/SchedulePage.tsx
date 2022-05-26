@@ -27,7 +27,7 @@ const SchedulePage = () => {
   React.useEffect(() => {
     setIsLoadingTitle(true)
     switch (type) {
-      case 'group': ApiInstance.getGroup(id!).then(group => { setTitle(group.name); setIsLoadingTitle(false) }); break;
+      case 'groups': ApiInstance.getGroup(id!).then(group => { setTitle(group.name); setIsLoadingTitle(false) }); break;
       case 'teacher': ApiInstance.getTeacher(id!).then(teacher => { setTitle(teacher.surname); setIsLoadingTitle(false) }); break;
       default: ApiInstance.getAuditory(id!).then(auditory => { setTitle(auditory.name); setIsLoadingTitle(false) });
     }
@@ -38,7 +38,7 @@ const SchedulePage = () => {
 
     let promise: Promise<PairList>
     switch (type) {
-      case 'group': promise = ApiInstance.getGroupPairsListInDay(id!, `${dayDate.getFullYear()}-${dayDate.getMonth() + 1}-${dayDate.getDate()}`); break;
+      case 'groups': promise = ApiInstance.getGroupPairsListInDay(id!, `${dayDate.getFullYear()}-${dayDate.getMonth() + 1}-${dayDate.getDate()}`); break;
       case 'teacher': promise = ApiInstance.getTeacherPairsListInDay(id!, `${dayDate.getFullYear()}-${dayDate.getMonth() + 1}-${dayDate.getDate()}`); break;
       default: promise = ApiInstance.getAuditoryPairsListInDay(id!, `${dayDate.getFullYear()}-${dayDate.getMonth() + 1}-${dayDate.getDate()}`);
     }
@@ -80,15 +80,22 @@ const SchedulePage = () => {
         >
           {
             !isLoadingTitle && (
-              <Typography sx={{ color: '#313131', fontSize: '28px', fontFamily: 'Mont' }}>
-                {title}
-              </Typography>
+              <>
+                <Typography sx={{ color: '#7165E3', fontSize: 15, marginTop: '14px', fontFamily: 'Mont' }}>
+                  {type === 'groups' && 'Группа'}
+                  {type === 'teacher' && 'Преподаватель'}
+                  {type === 'auditory' && 'Аудитория'}
+                </Typography>
+                <Typography sx={{ color: '#7165E3', fontSize: 28, fontFamily: 'Mont' }}>
+                  {title}
+                </Typography>
+              </>
             )
           }
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             {
               !isLoadingPairList && isPairListEmpty && (
-                <Typography sx={{ color: '#313131', fontSize: '28px', fontFamily: 'Mont' }}>
+                <Typography sx={{ color: '#7165E3', marginTop: '25px', fontSize: '28px', fontFamily: 'Mont' }}>
                   Пар нет!
                 </Typography>
               )

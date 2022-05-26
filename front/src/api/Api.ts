@@ -16,7 +16,7 @@ export class Api {
   private readonly axios = axios.create({ baseURL: this.BASE_URL });
 
   async getGroupsInInstitute(instituteId: number): Promise<GroupList> {
-    return this.axios.get<GroupList>(`/groups/${instituteId}`).then((data) => data.data);
+    return this.axios.get<GroupList>(`/groups/institute/${instituteId}`).then((data) => data.data);
   }
   async getAllInstitutes(): Promise<Institute[]> {
     return this.axios.get<Institute[]>('/institutes').then((data) => data.data);

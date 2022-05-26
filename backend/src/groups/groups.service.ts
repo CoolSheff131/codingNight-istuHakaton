@@ -35,7 +35,7 @@ export class GroupsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} group`;
+    return this.groupRepository.findOneBy({ id });
   }
 
   update(id: number, updateGroupDto: UpdateGroupDto) {

@@ -92,6 +92,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
               <Typography
                 key={auditory.id}
                 sx={{
+                  marginTop: '5px',
                   marginRight: '5px',
                   paddingLeft: '7px',
                   paddingRight: '7px',
