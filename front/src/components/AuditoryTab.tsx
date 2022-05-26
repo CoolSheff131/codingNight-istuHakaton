@@ -1,8 +1,18 @@
 import { Box, Button, Typography } from '@mui/material';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { ApiInstance } from '../api/Api';
+import { Auditory } from '../models/Auditory';
 import ColorButton from './ColorButton';
 
 const AuditoryTab = () => {
+  const [auditories, setAuditories] = React.useState<Auditory[]>([])
+
+  React.useEffect(() => {
+    ApiInstance.getAllAuditory().then((auditoriesApi) => {
+      setAuditories(auditoriesApi)
+    })
+  }, [])
   return (
     <Box>
       <Typography sx={{ color: '#7165E3', fontSize: 18, marginTop: '14px' }}>
@@ -65,68 +75,31 @@ const AuditoryTab = () => {
           justifyContent: 'start',
         }}
       >
-        {Array.from(Array(10).keys()).map((number) => {
+        {auditories.map((auditory) => {
           return (
             <NavLink
-              key={number}
-              to={`${number}`}
+              key={auditory.id}
+              to={`${auditory.id}`}
               style={{ textDecoration: 'none' }}
             >
               <Button
                 variant="text"
                 sx={{
-                  padding: 0,
+                  paddingTop: '10px',
+                  paddingBottom: '10px',
+                  paddingLeft: '15px',
+                  paddingRight: '15px',
+                  borderRadius: '10px',
+                  borderColor: '#8B80F8',
                   textTransform: 'none',
                   fontWeight: 400,
-                  color: '#3B3D48',
-                  fontSize: 16,
+                  color: '#3C30AC',
+                  fontSize: 18,
                   marginTop: '7px',
                   marginRight: '10px',
                 }}
               >
-                Г-101
-              </Button>
-            </NavLink>
-          );
-        })}
-      </Box>
-      <Typography
-        sx={{
-          fontWeight: 500,
-          color: '#000',
-          fontSize: 18,
-          marginTop: '32px',
-        }}
-      >
-        Второй этаж
-      </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'start',
-        }}
-      >
-        {Array.from(Array(10).keys()).map((number) => {
-          return (
-            <NavLink
-              key={number}
-              to={`${number}`}
-              style={{ textDecoration: 'none' }}
-            >
-              <Button
-                variant="text"
-                sx={{
-                  padding: 0,
-                  textTransform: 'none',
-                  fontWeight: 400,
-                  color: '#3B3D48',
-                  fontSize: 16,
-                  marginTop: '7px',
-                  marginRight: '10px',
-                }}
-              >
-                Г-101
+                {auditory.name}
               </Button>
             </NavLink>
           );

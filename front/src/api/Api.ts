@@ -21,7 +21,7 @@ export class Api extends IApi {
     return this.axios.get<Institute[]>('/institutes').then((data) => data.data);
   }
   async getAllAuditory(): Promise<Auditory[]> {
-    return this.axios.get<Auditory[]>('/auditory').then((data) => data.data);
+    return this.axios.get<Auditory[]>('/auditories').then((data) => data.data);
   }
   async getAllTeachers(): Promise<Teacher[]> {
     return this.axios.get<Teacher[]>('/teachers').then((data) => data.data);

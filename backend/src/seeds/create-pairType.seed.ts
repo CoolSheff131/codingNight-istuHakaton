@@ -148,7 +148,7 @@ export default class CreatePairType implements Seeder {
 
     const allAuditories = [];
     let number = 0;
-    for (const name in auditoryName) {
+    for (const name of auditoryName) {
       const auditory = await factory(AuditoryEntity)().create({
         floor: 0,
         corpus: allCorps[Math.floor(Math.random() * allCorps.length)],
