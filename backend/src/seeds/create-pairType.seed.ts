@@ -100,16 +100,19 @@ export default class CreatePairType implements Seeder {
     const group1 = await factory(GroupEntity)().create({
       name: 'Муми-тролли',
       institute: institute1,
+      course: 1,
       disciplines: getRandomElementsFromArray<DisciplineEntity>(allDisciplines),
     });
     const group2 = await factory(GroupEntity)().create({
       name: 'Снорки',
       institute: institute2,
+      course: 2,
       disciplines: getRandomElementsFromArray<DisciplineEntity>(allDisciplines),
     });
     const group3 = await factory(GroupEntity)().create({
       name: 'Мумрики',
       institute: institute2,
+      course: 3,
       disciplines: getRandomElementsFromArray<DisciplineEntity>(allDisciplines),
     });
     const allGroups = [group1, group2, group3];

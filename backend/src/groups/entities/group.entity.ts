@@ -21,6 +21,9 @@ export class GroupEntity {
   @Column()
   name: string;
 
+  @Column({ default: 1 })
+  course: number;
+
   // RELATIONS
   @ManyToMany(
     () => DisciplineEntity,
