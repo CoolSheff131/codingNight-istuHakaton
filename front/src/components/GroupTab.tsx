@@ -14,29 +14,39 @@ import { Institute } from '../models/Institute';
 import { ApiInstance } from '../api/Api';
 import { GroupList } from '../models/GroupList';
 import { Group } from '../models/Group';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const GroupTab = () => {
   const [selectedInstitute, setSelectedInstitute] = React.useState<Institute | null>(null);
   const [institutes, setInstitutes] = React.useState<Institute[]>([]);
   const [groupList, setGroupList] = React.useState<GroupList | null>(null);
+  const [isLoadingInstitutes, setIsLoadingInstitutes] = React.useState(true);
+  const [isLoadingGroups, setIsLoadingGroups] = React.useState(true);
 
   React.useEffect(() => {
+    if (selectedInstitute) {
+      return
+    }
+    setIsLoadingInstitutes(true)
     ApiInstance.getAllInstitutes().then((data) => {
       setInstitutes(data)
+      setIsLoadingInstitutes(false)
     })
   }, [])
   React.useEffect(() => {
     if (!selectedInstitute) {
       return
     }
+    setIsLoadingGroups(true)
     ApiInstance.getGroupsInInstitute(selectedInstitute.id).then((groups) => {
       setGroupList(groups)
+      setIsLoadingGroups(false)
     })
   }, [selectedInstitute])
 
   return (
     <Box>
-      <Typography sx={{ color: '#7165E3', fontSize: 18, marginTop: '14px' }}>
+      <Typography sx={{ color: '#7165E3', fontSize: 18, marginTop: '14px', fontFamily: 'Mont' }}>
         {selectedInstitute === null
           ? 'Институт'
           : selectedInstitute.name}
@@ -49,6 +59,12 @@ const GroupTab = () => {
           flexDirection: 'column',
         }}
       >
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          {isLoadingInstitutes && (
+            <CircularProgress />
+          )}
+        </Box>
+
         {selectedInstitute === null &&
           institutes.map((institute) => {
             return (
@@ -64,14 +80,25 @@ const GroupTab = () => {
                   backgroundColor: '#E8E6FF',
                   color: '#7165E3',
                   fontSize: '18px',
+                  fontFamily: 'Mont'
                 }}
               >
                 {institute.name}
               </Button>
             );
           })}
+        {selectedInstitute !== null && isLoadingGroups && (
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            {isLoadingGroups && (
+              <CircularProgress />
+
+            )}
+          </Box>
+        )
+        }
         {selectedInstitute !== null && groupList !== null && (
           <>
+
             {
               Object.entries(groupList).map(([key, value]) => {
                 const groupsCount = (value as any[]).length
@@ -109,6 +136,7 @@ const GroupTab = () => {
                                 fontSize: 18,
                                 marginTop: '7px',
                                 marginRight: '10px',
+                                fontFamily: 'Mont'
                               }}
                             >
                               {groupsInCourse.name}

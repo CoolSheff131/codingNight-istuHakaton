@@ -14,7 +14,7 @@ const StyledTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
 ))(({ theme }) => ({
   textTransform: 'none',
-
+  fontFamily: 'Mont',
   fontSize: 16,
   padding: 0,
   marginRight: theme.spacing(1),

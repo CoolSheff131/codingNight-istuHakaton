@@ -232,6 +232,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     color: 'white',
                     fontSize: '32px',
                     fontFamily: 'Mont',
+
                   }}
                 >
                   Вход
@@ -247,6 +248,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     paddingLeft: '20px',
                     paddingTop: '14px',
                     paddingBottom: '14px',
+                    fontFamily: 'Mont'
                   }}
                   placeholder="Логин"
                   type="text"
@@ -262,6 +264,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     paddingLeft: '20px',
                     paddingTop: '14px',
                     paddingBottom: '14px',
+                    fontFamily: 'Mont'
                   }}
                   placeholder="Пароль"
                   type="password"
@@ -273,7 +276,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     fontSize: '24px',
                     backgroundColor: '#ECD92F',
                     color: '#313131',
-                    textTransform: 'none'
+                    textTransform: 'none',
+                    fontFamily: 'Mont',
                   }}
                 >
                   Вход
@@ -298,7 +302,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     borderRadius: '6px',
                     marginLeft: '25px',
                     marginRight: '25px',
-
+                    fontFamily: 'Mont'
                   }}
                 >
                   Назад

@@ -12,6 +12,7 @@ const FavoriteButton = styled(Button)(({ theme }) => ({
   color: '#7165E3',
   textTransform: 'none',
   backgroundColor: '#FFFFFF',
+  fontFamily: 'Mont',
   '&:hover': {
     color: '#FFFFFF',
     backgroundColor: '#7165E3',

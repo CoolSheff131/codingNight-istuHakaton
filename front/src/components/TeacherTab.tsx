@@ -2,23 +2,31 @@ import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Teacher } from '../models/Teacher';
-import ColorButton from './ColorButton';
 import { ApiInstance } from '../api/Api';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const TeacherTab = () => {
   const [teachers, setTeachers] = React.useState<Teacher[]>([])
+  const [isLoading, setIsLoading] = React.useState(true);
   React.useEffect(() => {
+    setIsLoading(true)
     ApiInstance.getAllTeachers().then((teachersApi) => {
       setTeachers(teachersApi)
+      setIsLoading(false)
     })
-  })
+  }, [])
   return (
     <Box>
       <Typography sx={{ color: '#7165E3', fontSize: 18, marginTop: '14px' }}>
         Фамилия
       </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        {isLoading && (
+          <CircularProgress />
 
-      <Box
+        )}
+      </Box>
+      {/* <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -31,7 +39,7 @@ const TeacherTab = () => {
             </ColorButton>
           );
         })}
-      </Box>
+      </Box> */}
 
       {teachers.map((teacher) => {
         return (

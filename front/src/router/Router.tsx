@@ -4,9 +4,7 @@ import EventTab from '../components/EventTab';
 import GroupTab from '../components/GroupTab';
 import TeacherTab from '../components/TeacherTab';
 import HomePage from '../pages/HomePage';
-import ScheduleAuditoryPage from '../pages/ScheduleAuditoryPage';
 import SchedulePage from '../pages/SchedulePage';
-import ScheduleTeacherPage from '../pages/ScheduleTeacherPage';
 
 const Router = () => (
   <Routes>

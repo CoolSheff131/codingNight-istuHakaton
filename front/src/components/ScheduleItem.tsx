@@ -65,6 +65,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
       </Typography>
       <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
         {teachers.map(teacher => <Typography
+          key={teacher.id}
           sx={{
             marginRight: '5px',
             fontSize: '14px',
@@ -89,6 +90,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
           {
             auditories.map((auditory) => (
               <Typography
+                key={auditory.id}
                 sx={{
                   marginRight: '5px',
                   paddingLeft: '7px',
@@ -112,6 +114,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
           {
             groups.map(group => (
               <Typography
+                key={group.id}
                 sx={{
                   color: '#3B3D48',
                   fontSize: '14px',
@@ -169,6 +172,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
                     {
                       Array.from(Array(numberOfPairInSamePairNumber).keys()).map((numDot) => (
                         <Box
+                          key={numDot}
                           sx={{
                             width: '6px',
                             height: '6px',

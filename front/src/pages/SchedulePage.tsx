@@ -14,15 +14,27 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const SchedulePage = () => {
   const [pairList, setPairList] = React.useState<PairList | null>(null)
-  const [dayDate, setValue] = React.useState(new Date());
+  const [dayDate, setDayDate] = React.useState(new Date());
   const [isPairListEmpty, setIsPairListEmpty] = React.useState(true);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoadingPairList, setIsLoadingPairList] = React.useState(true);
+  const [isLoadingTitle, setIsLoadingTitle] = React.useState(true);
+  const [title, setTitle] = React.useState('');
   let { type, id } = useParams();
-  const myChange = (ev: any) => {
-    setValue(ev.value); // ev.value is a Moment object
+  const onChooseDy = (ev: any) => {
+    setDayDate(ev.value);
   }
+
   React.useEffect(() => {
-    setIsLoading(true)
+    setIsLoadingTitle(true)
+    switch (type) {
+      case 'group': ApiInstance.getGroup(id!).then(group => { setTitle(group.name); setIsLoadingTitle(false) }); break;
+      case 'teacher': ApiInstance.getTeacher(id!).then(teacher => { setTitle(teacher.surname); setIsLoadingTitle(false) }); break;
+      default: ApiInstance.getAuditory(id!).then(auditory => { setTitle(auditory.name); setIsLoadingTitle(false) });
+    }
+  }, [])
+
+  React.useEffect(() => {
+    setIsLoadingPairList(true)
 
     let promise: Promise<PairList>
     switch (type) {
@@ -32,12 +44,10 @@ const SchedulePage = () => {
     }
     promise.then((pairListApi) => {//'2022-05-26'
       setPairList(pairListApi)
-      setIsLoading(false)
+      setIsLoadingPairList(false)
       let isEmpty = true
       for (const [key, value] of Object.entries(pairListApi)) {
         const pairCount = (value as any[]).length
-        console.log(pairCount);
-
         if (pairCount > 0) {
           isEmpty = false
           break
@@ -53,7 +63,7 @@ const SchedulePage = () => {
       <Container maxWidth="sm">
         <SearchBar />
         <Box sx={{ marginTop: '25px' }}>
-          <NewCalendar value={dayDate} onChange={myChange} />
+          <NewCalendar value={dayDate} onChange={onChooseDy} />
         </Box>
       </Container>
       <Box
@@ -68,26 +78,33 @@ const SchedulePage = () => {
           maxWidth="sm"
           sx={{ paddingTop: '25px', paddingBottom: '25px' }}
         >
+          {
+            !isLoadingTitle && (
+              <Typography sx={{ color: '#313131', fontSize: '28px', fontFamily: 'Mont' }}>
+                {title}
+              </Typography>
+            )
+          }
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             {
-              !isLoading && isPairListEmpty && (
-                <Typography sx={{ color: '#313131', fontSize: '28px' }}>
+              !isLoadingPairList && isPairListEmpty && (
+                <Typography sx={{ color: '#313131', fontSize: '28px', fontFamily: 'Mont' }}>
                   Пар нет!
                 </Typography>
               )
             }
-            {isLoading && (
+            {isLoadingPairList && (
               <CircularProgress />
 
             )}
           </Box>
           {
-            pairList !== null && !isLoading &&
+            pairList !== null && !isLoadingPairList &&
             Object.entries(pairList).map(([key, value]) => {
               const pairCount = (value as any[]).length
               if (pairCount > 0)
                 return (
-                  <Box sx={{ marginTop: '15px' }}>
+                  <Box key={key} sx={{ marginTop: '15px' }}>
                     <SwipeableViews enableMouseEvents resistance>
                       {
                         value.map((pair: Pair, index: number) => <ScheduleItem numberOfPairInSamePairNumber={value.length} index={index} auditories={pair.auditories} discipline={pair.discipline} groups={pair.groups} pairNumber={pair.pairNumber} subGroupNumber={pair.subGroupNumber} teachers={pair.teachers} type={pair.type} id={pair.id} key={pair.id} />)

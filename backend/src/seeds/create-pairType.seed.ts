@@ -178,17 +178,12 @@ export default class CreatePairType implements Seeder {
     const teacher6 = await factory(TeacherEntity)().create({
       surname: 'Юксаре',
     });
-    const teacher7 = await factory(TeacherEntity)().create({
-      surname: 'Морра',
-    });
+
     const teacher8 = await factory(TeacherEntity)().create({
       surname: 'Туу-тикки',
     });
     const teacher9 = await factory(TeacherEntity)().create({
       surname: 'Ти-ти-у-у',
-    });
-    const teacher10 = await factory(TeacherEntity)().create({
-      surname: 'Юксаре',
     });
 
     const allTeachers = [
@@ -198,10 +193,8 @@ export default class CreatePairType implements Seeder {
       teacher4,
       teacher5,
       teacher6,
-      teacher7,
       teacher8,
       teacher9,
-      teacher10,
     ];
     console.log('TEACHERS CREATED');
 

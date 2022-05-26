@@ -54,6 +54,16 @@ export class Api {
     const params = eventFiltersToSearchParams(filters);
     return this.axios.get<Event[]>('/event', { params }).then((data) => data.data);
   }
+
+  async getGroup(id: string): Promise<Group> {
+    return this.axios.get<Group>('/groups/' + id).then((data) => data.data);
+  }
+  async getAuditory(id: string): Promise<Auditory> {
+    return this.axios.get<Auditory>('/auditories/' + id).then((data) => data.data);
+  }
+  async getTeacher(id: string): Promise<Teacher> {
+    return this.axios.get<Teacher>('/teachers/' + id).then((data) => data.data);
+  }
 }
 
 export const ApiInstance = new Api();

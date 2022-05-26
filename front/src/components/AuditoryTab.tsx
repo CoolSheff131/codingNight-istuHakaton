@@ -4,22 +4,24 @@ import { NavLink } from 'react-router-dom';
 import { ApiInstance } from '../api/Api';
 import { Auditory } from '../models/Auditory';
 import ColorButton from './ColorButton';
-
+import CircularProgress from '@mui/material/CircularProgress';
 const AuditoryTab = () => {
   const [auditories, setAuditories] = React.useState<Auditory[]>([])
-
+  const [isLoadingAuditories, setIsLoadingAuditories] = React.useState(true);
   React.useEffect(() => {
+    setIsLoadingAuditories(true)
     ApiInstance.getAllAuditory().then((auditoriesApi) => {
       setAuditories(auditoriesApi)
+      setIsLoadingAuditories(false)
     })
   }, [])
   return (
     <Box>
-      <Typography sx={{ color: '#7165E3', fontSize: 18, marginTop: '14px' }}>
-        Корпус
+      <Typography sx={{ color: '#7165E3', fontSize: 18, marginTop: '14px', fontFamily: 'Mont' }}>
+        Аудитории
       </Typography>
 
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -28,37 +30,11 @@ const AuditoryTab = () => {
       >
         <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
           A
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          Б
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          В
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          Г
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          Д
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          Е
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          Ж
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          К
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          И
-        </ColorButton>
-        <ColorButton sx={{ marginRight: '12.5px' }} variant="contained">
-          Иные
-        </ColorButton>
-      </Box>
+        </ColorButton>        
+      </Box> */}
 
-      <Typography
+
+      {/* <Typography
         sx={{
           fontWeight: 500,
           color: '#000',
@@ -67,7 +43,13 @@ const AuditoryTab = () => {
         }}
       >
         Первый этаж
-      </Typography>
+      </Typography> */}
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        {isLoadingAuditories && (
+          <CircularProgress />
+
+        )}
+      </Box>
       <Box
         sx={{
           display: 'flex',
@@ -97,6 +79,7 @@ const AuditoryTab = () => {
                   fontSize: 18,
                   marginTop: '7px',
                   marginRight: '10px',
+                  fontFamily: 'Mont'
                 }}
               >
                 {auditory.name}
