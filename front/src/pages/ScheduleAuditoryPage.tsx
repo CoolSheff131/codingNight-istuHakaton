@@ -25,7 +25,7 @@ const ScheduleAuditoryPage = () => {
           maxWidth="sm"
           sx={{ paddingTop: '25px', paddingBottom: '25px' }}
         >
-          <Box sx={{ marginTop: '15px' }}>
+          {/* <Box sx={{ marginTop: '15px' }}>
             <SwipeableViews enableMouseEvents resistance>
               <ScheduleItem type={Type.type1} />
               <ScheduleItem type={Type.type1} />
@@ -42,7 +42,7 @@ const ScheduleAuditoryPage = () => {
               <ScheduleItem type={Type.type1} />
               <ScheduleItem type={Type.type1} />
             </SwipeableViews>
-          </Box>
+          </Box> */}
         </Container>
       </Box>
     </>

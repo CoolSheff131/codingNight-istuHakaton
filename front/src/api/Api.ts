@@ -6,11 +6,12 @@ import { Group } from '../models/Group';
 import { GroupList } from '../models/GroupList';
 import { Institute } from '../models/Institute';
 import { Pair, PairFilters } from '../models/Pair';
+import { PairList } from '../models/PairList';
 import { Teacher } from '../models/Teacher';
 import { Week } from '../models/Week';
 import IApi from './IApi';
 
-export class Api extends IApi {
+export class Api {
   private readonly BASE_URL = 'http://localhost:8000';
   private readonly axios = axios.create({ baseURL: this.BASE_URL });
 
@@ -31,10 +32,24 @@ export class Api extends IApi {
     return this.axios.get<Week>(`/week/${weekBeginingDate}`).then((data) => data.data);
   }
 
-  async filterPairList(filters: PairFilters): Promise<Pair[]> {
-    const params = pairFiltersToSearchParams(filters);
-    return this.axios.get<Pair[]>('/pair', { params }).then((data) => data.data);
+  async getGroupPairsListInDay(groupId: string, day: string): Promise<PairList> {
+    return this.axios
+      .get<PairList>('/pairs/group/' + groupId + '/' + day)
+      .then((data) => data.data);
   }
+
+  async getAuditoryPairsListInDay(auditoryId: string, day: string): Promise<PairList> {
+    return this.axios
+      .get<PairList>('/pairs/auditory/' + auditoryId + '/' + day)
+      .then((data) => data.data);
+  }
+
+  async getTeacherPairsListInDay(teacherId: string, day: string): Promise<PairList> {
+    return this.axios
+      .get<PairList>('/pairs/teacher/' + teacherId + '/' + day)
+      .then((data) => data.data);
+  }
+
   async filterEventList(filters: EventFilters): Promise<Event[]> {
     const params = eventFiltersToSearchParams(filters);
     return this.axios.get<Event[]>('/event', { params }).then((data) => data.data);

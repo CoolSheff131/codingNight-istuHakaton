@@ -4,6 +4,7 @@ import { Group } from '../models/Group';
 import { GroupList } from '../models/GroupList';
 import { Institute } from '../models/Institute';
 import { Pair, PairFilters } from '../models/Pair';
+import { PairList } from '../models/PairList';
 import { Teacher } from '../models/Teacher';
 import { Week } from '../models/Week';
 
@@ -13,6 +14,6 @@ export default abstract class IApi {
   abstract getAllAuditory(): Promise<Auditory[]>;
   abstract getAllTeachers(): Promise<Teacher[]>;
   abstract getWeek(weekBeginingDate: string): Promise<Week>;
-  abstract filterPairList(filters: PairFilters): Promise<Pair[]>;
+  abstract getGroupPairsListInDay(day: string): Promise<PairList>;
   abstract filterEventList(filters: EventFilters): Promise<Event[]>;
 }

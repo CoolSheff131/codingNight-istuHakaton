@@ -1,6 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import { Group } from 'material-ui-icons';
+import { Auditory } from '../models/Auditory';
+import { Discipline } from '../models/Descipline';
+import { PairNumber } from '../models/PairNumber';
+import { PairType } from '../models/PairType';
+import { Teacher } from '../models/Teacher';
 
 export enum Type {
   type1,
@@ -8,9 +14,18 @@ export enum Type {
 }
 
 interface ScheduleItemProps {
-  type: Type;
+  id: number;
+  type: PairType; //тип, 1 -- лекция, 2 -- практика, 3 -- лаба  
+  pairNumber: PairNumber; //номер пары, от 1 до 8
+  numberOfPairInSamePairNumber: number;
+  index: number;
+  groups: Group[];
+  subGroupNumber: number; //номер подгруппы, если занятие имеет тип 3, то в groups будет ровно одна группа, а 1 означает, что на занятие придет только первая половина группы 2 означает, что на занятие придет только вторая половина группы
+  discipline: Discipline;
+  teachers: Teacher[];
+  auditories: Auditory[];
 }
-const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
+const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumber, index, id, type, pairNumber, groups, subGroupNumber, discipline, teachers, auditories }) => {
   return (
     <Box
       sx={{
@@ -20,7 +35,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
         paddingRight: '10px',
         marginLeft: '10px',
         marginRight: '10px',
-        backgroundColor: type === Type.type1 ? '#E8E6FF' : '#FFFFFF',
+        backgroundColor: '#FFFFFF',
         borderRadius: '10px',
       }}
     >
@@ -36,27 +51,31 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
               color: 'white',
             }}
           >
-            3
+            {pairNumber}
           </Box>
           <Typography sx={{ marginLeft: '17px', fontSize: '16px' }}>
             Лекция
           </Typography>
         </Box>
-        <Typography sx={{ fontSize: '16px' }}>11.45-13.15</Typography>
+        {/* <Typography sx={{ fontSize: '16px' }}>11.45-13.15</Typography> */}
       </Box>
       <Typography sx={{ fontSize: '16px', fontWeight: 700, marginTop: '10px' }}>
-        Название предмета средней длины средней длины
+        {discipline.name}
       </Typography>
-      <Typography
-        sx={{
-          fontSize: '14px',
-          fontWeight: 400,
-          fontStyle: 'italic',
-          marginTop: '5px',
-        }}
-      >
-        Анатольев A.В.
-      </Typography>
+      <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
+        {teachers.map(teacher => <Typography
+          sx={{
+            marginRight: '5px',
+            fontSize: '14px',
+            fontWeight: 400,
+            fontStyle: 'italic',
+            marginTop: '5px',
+          }}
+        >
+          {teacher.surname}
+        </Typography>)}
+      </Box>
+
       <Box
         sx={{
           display: 'flex',
@@ -65,65 +84,45 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
         }}
       >
         <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
-          <Typography
-            sx={{
-              paddingLeft: '7px',
-              paddingRight: '7px',
-              borderRadius: '5px',
-              backgroundColor: '#7165E3',
-              height: '20px',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 500,
-            }}
-          >
-            К-302
-          </Typography>
+          {
+            auditories.map((auditory) => (
+              <Typography
+                sx={{
+                  marginRight: '5px',
+                  paddingLeft: '7px',
+                  paddingRight: '7px',
+                  borderRadius: '5px',
+                  backgroundColor: '#7165E3',
+                  height: '20px',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                }}
+              >
+                {auditory.name}
+              </Typography>
+            ))
+          }
+
         </Box>
         <Box sx={{ display: 'flex', flex: 1, flexWrap: 'wrap' }}>
-          <Typography
-            sx={{
-              color: '#3B3D48',
-              fontSize: '14px',
-              fontWeight: 500,
-              marginRight: '5px',
-            }}
-          >
-            ИСТб-19-1
-          </Typography>
-          <Typography
-            sx={{
-              color: '#3B3D48',
-              fontSize: '14px',
-              fontWeight: 500,
-              marginRight: '5px',
-            }}
-          >
-            ИСТб-19-1
-          </Typography>
-          <Typography
-            sx={{
-              color: '#3B3D48',
-              fontSize: '14px',
-              fontWeight: 500,
-              marginRight: '5px',
-            }}
-          >
-            ИСТб-19-1
-          </Typography>
-          <Typography
-            sx={{
-              color: '#3B3D48',
-              fontSize: '14px',
-              fontWeight: 500,
-              marginRight: '5px',
-            }}
-          >
-            ИСТб-19-1
-          </Typography>
+          {
+            groups.map(group => (
+              <Typography
+                sx={{
+                  color: '#3B3D48',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  marginRight: '5px',
+                }}
+              >
+                {group.name}
+              </Typography>
+            ))
+          }
         </Box>
       </Box>
-      {type === Type.type1 && (
+      {(
         <>
           <Typography
             sx={{
@@ -133,52 +132,55 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
               marginRight: '5px',
             }}
           >
-            Примечание: подгруппа 1
+            {`подгруппа ${subGroupNumber}`}
           </Typography>
-          <Divider light sx={{ marginTop: '15px' }} />
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              marginTop: '10px',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <ErrorOutlineOutlinedIcon sx={{ color: 'red' }} />
-              <Typography
-                sx={{
-                  color: '#3B3D48',
-                  fontSize: '12px',
-                  fontWeight: 400,
-                  marginLeft: '11px',
-                }}
-              >
-                Несколько предметов в это время
-              </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Box
-                sx={{
-                  width: '6px',
-                  height: '6px',
-                  marginRight: '3px',
-                  borderRadius: '3px',
-                  backgroundColor: '#7165E3',
-                }}
-              />
-              <Box
-                sx={{
-                  width: '6px',
-                  height: '6px',
-                  marginRight: '3px',
-                  borderRadius: '3px',
-                  backgroundColor: '#C5BFFF',
-                }}
-              />
-            </Box>
-          </Box>
-          <Typography
+          {
+            numberOfPairInSamePairNumber > 1 && (
+              <>
+                <Divider light sx={{ marginTop: '15px' }} />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginTop: '10px',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <ErrorOutlineOutlinedIcon sx={{ color: 'red' }} />
+                    <Typography
+                      sx={{
+                        color: '#3B3D48',
+                        fontSize: '12px',
+                        fontWeight: 400,
+                        marginLeft: '11px',
+                      }}
+                    >
+                      Несколько предметов в это время
+                    </Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    {
+                      Array.from(Array(numberOfPairInSamePairNumber).keys()).map((numDot) => (
+                        <Box
+                          sx={{
+                            width: '6px',
+                            height: '6px',
+                            marginRight: '3px',
+                            borderRadius: '3px',
+                            backgroundColor: numDot === index ? '#7165E3' : '#C5BFFF',
+                          }}
+                        />
+                      ))
+
+                    }
+                  </Box>
+                </Box>
+              </>
+            )
+          }
+
+          {/* <Typography
             sx={{
               color: '#7165E3',
               fontSize: '12px',
@@ -188,7 +190,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ type }) => {
             }}
           >
             36 минут до конца
-          </Typography>
+          </Typography> */}
         </>
       )}
     </Box>

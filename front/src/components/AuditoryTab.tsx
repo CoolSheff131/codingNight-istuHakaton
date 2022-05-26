@@ -79,7 +79,7 @@ const AuditoryTab = () => {
           return (
             <NavLink
               key={auditory.id}
-              to={`${auditory.id}`}
+              to={`/schedule/auditory/${auditory.id}`}
               style={{ textDecoration: 'none' }}
             >
               <Button

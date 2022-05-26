@@ -1,5 +1,6 @@
 import { Group } from './Group';
 
+// Группы, сгрупированые по курсу
 export interface GroupList {
   '1': Group[];
   '2': Group[];

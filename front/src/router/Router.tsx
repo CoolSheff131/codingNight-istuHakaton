@@ -16,9 +16,7 @@ const Router = () => (
       <Route path="auditory" element={<AuditoryTab />} />
       <Route path="event" element={<EventTab />} />
     </Route>
-    <Route path="/group/:id" element={<SchedulePage />} />
-    <Route path="/teacher/:id" element={<ScheduleTeacherPage />} />
-    <Route path="/auditory/:id" element={<ScheduleAuditoryPage />} />
+    <Route path="/schedule/:type/:id" element={<SchedulePage />} />
     {/* <Route path="/event/:id" element={<SchedulePage />} /> */}
   </Routes>
 );

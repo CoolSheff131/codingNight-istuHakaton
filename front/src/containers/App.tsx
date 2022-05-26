@@ -9,12 +9,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 import SideMenu from '../components/SideMenu';
+import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 
 const App = () => {
-  const [state, setState] = React.useState(false);
+  const [isSideMenuOpen, setIsSideMenuOpen] = React.useState(false);
 
   return (
     <div>
@@ -52,22 +53,29 @@ const App = () => {
               >
                 Расписание групп
               </Typography>
-              <IconButton onClick={() => setState(true)} sx={{ padding: 0 }}>
+              <IconButton onClick={() => setIsSideMenuOpen(true)} sx={{ padding: 0 }}>
                 <MenuIcon sx={{ color: 'white' }} />
               </IconButton>
               <SideMenu
-                open={state}
-                onClose={() => setState(false)}
-                onOpen={() => setState(true)}
+                open={isSideMenuOpen}
+                onClose={() => setIsSideMenuOpen(false)}
+                onOpen={() => setIsSideMenuOpen(true)}
               />
             </Box>
-            <Typography
-              variant="h2"
-              component="h2"
-              sx={{ fontSize: 16, color: 'white', marginTop: '12px' }}
+            <NavLink
+              to={`/group`}
+              style={{ textDecoration: 'none' }}
             >
-              Расписание / Группы
-            </Typography>
+              <Typography
+                variant="h2"
+                component="h2"
+
+                sx={{ cursor: 'pointer', fontSize: 16, color: 'white', marginTop: '12px' }}
+              >
+                Расписание / Группы
+              </Typography>
+            </NavLink>
+
           </Container>
           <Router />
         </Box>

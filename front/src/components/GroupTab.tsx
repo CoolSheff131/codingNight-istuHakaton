@@ -91,7 +91,7 @@ const GroupTab = () => {
                         {value.map((groupsInCourse: Group) => (
                           <NavLink
                             key={groupsInCourse.id}
-                            to={`${groupsInCourse.id}`}
+                            to={`/schedule/groups/${groupsInCourse.id}`}
                             style={{ textDecoration: 'none' }}
                           >
                             <Button

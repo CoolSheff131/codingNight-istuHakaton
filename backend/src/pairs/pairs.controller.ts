@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PairsService } from './pairs.service';
 import { CreatePairDto } from './dto/create-pair.dto';
 import { UpdatePairDto } from './dto/update-pair.dto';
@@ -17,9 +25,28 @@ export class PairsController {
     return this.pairsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pairsService.findOne(+id);
+  @Get('group/:groupId/:dayDate')
+  findByGroup(
+    @Param('dayDate') dayDate: string,
+    @Param('groupId') groupId: string,
+  ) {
+    return this.pairsService.findInDayGroup(groupId, dayDate);
+  }
+
+  @Get('auditory/:groupId/:dayDate')
+  findByAuditory(
+    @Param('dayDate') dayDate: string,
+    @Param('groupId') groupId: string,
+  ) {
+    return this.pairsService.findInDayAuditory(groupId, dayDate);
+  }
+
+  @Get('teacher/:groupId/:dayDate')
+  findByTeacher(
+    @Param('dayDate') dayDate: string,
+    @Param('groupId') groupId: string,
+  ) {
+    return this.pairsService.findInDayTeacher(groupId, dayDate);
   }
 
   @Patch(':id')

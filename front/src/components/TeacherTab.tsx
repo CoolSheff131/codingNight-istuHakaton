@@ -37,7 +37,7 @@ const TeacherTab = () => {
         return (
           <NavLink
             key={teacher.id}
-            to={`${teacher.id}`}
+            to={`/schedule/teacher/${teacher.id}`}
             style={{ textDecoration: 'none' }}
           >
             <Button

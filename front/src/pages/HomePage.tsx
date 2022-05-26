@@ -1,11 +1,10 @@
 import { Box, Container, Tab, Tabs } from '@mui/material';
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import Calendar from '../components/Calendar';
 import SearchBar from '../components/SearchBar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import NewCalendar from '../components/NewCalendar';
 
-import FavoriteButton from '../components/FavoriteButton';
 
 interface StyledTabProps {
   label: string;
@@ -61,20 +60,20 @@ const HomePage = () => {
     location.pathname === '/group'
       ? 0
       : location.pathname === '/teacher'
-      ? 1
-      : location.pathname === '/auditory'
-      ? 2
-      : 3,
+        ? 1
+        : location.pathname === '/auditory'
+          ? 2
+          : 3,
   );
   React.useEffect(() => {
     setValue(
       location.pathname === '/group'
         ? 0
         : location.pathname === '/teacher'
-        ? 1
-        : location.pathname === '/auditory'
-        ? 2
-        : 3,
+          ? 1
+          : location.pathname === '/auditory'
+            ? 2
+            : 3,
     );
   }, [location]);
   const navigate = useNavigate();
@@ -82,29 +81,13 @@ const HomePage = () => {
     setValue(newValue);
   };
 
+
+
   return (
     <>
       <Container maxWidth="sm">
         <SearchBar />
-
-        <Box sx={{ display: 'flex', marginTop: '15px' }}>
-          <FavoriteButton
-            onClick={() => navigate('/schedule')}
-            sx={{ marginRight: '9px' }}
-            variant="contained"
-          >
-            ИСТб-19-1
-          </FavoriteButton>
-          <FavoriteButton
-            onClick={() => navigate('/schedule')}
-            sx={{ marginRight: '9px' }}
-            variant="contained"
-          >
-            ЭВМб-19-1
-          </FavoriteButton>
-        </Box>
-
-        <Calendar />
+        {/* <NewCalendar /> */}
         <StyledTabs value={value} onChange={handleChange}>
           <StyledTab label="Группы" onClick={() => navigate('group')} />
 

@@ -220,7 +220,7 @@ export default class CreatePairType implements Seeder {
     console.log('STUDENTS CREATED');
     const allPairs = await factory(PairEntity)()
       .map(async (pair: PairEntity) => {
-        pair.weekBegining = new Date('2022-05-26');
+        pair.weekBegining = new Date('2022-05-23');
         pair.teachers = getRandomElementsFromArray<TeacherEntity>(allTeachers);
         pair.groups = getRandomElementsFromArray<GroupEntity>(allGroups);
         pair.auditories =
