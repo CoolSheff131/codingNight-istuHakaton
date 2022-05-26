@@ -28,11 +28,8 @@ function generateRandom(min = 1, max = 8) {
   return rand;
 }
 
-function getRandomElementsFromArray<T>(myArray: T[]) {
-  const arr = myArray
-    .map((a) => ({ sort: Math.random(), value: a }))
-    .sort((a, b) => a.sort - b.sort)
-    .map((a) => a.value);
+function getRandomElementsFromArray<T>(myArray: T[], count = 2) {
+  const arr = myArray.sort(() => Math.random() - Math.random()).slice(0, count);
   return arr;
 }
 
