@@ -3,12 +3,12 @@ import { Day } from './Day';
 import { Discipline } from './Descipline';
 import { Group } from './Group';
 import { PairNumber } from './PairNumber';
-import { PairType } from './PairType';
+import { PairType, PairTypeModel } from './PairType';
 import { Teacher } from './Teacher';
 
 export interface Pair {
   id: number;
-  type: PairType; //тип, 1 -- лекция, 2 -- практика, 3 -- лаба
+  pairType: PairTypeModel; //тип, 1 -- лекция, 2 -- практика, 3 -- лаба
   day: Day; // день, от 1 до 7, 1 -- понедельник, 2 -- вторник и т.д.
   pairNumber: PairNumber; //номер пары, от 1 до 8
   weekBegining: string;

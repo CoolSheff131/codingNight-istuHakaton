@@ -32,6 +32,7 @@ import { PairTypeEntity } from './pair-types/entities/pair-type.entity';
 import { WorkEntity } from './works/entities/work.entity';
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
+import { NoteEntity } from './notes/entities/note.entity';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { NotesModule } from './notes/notes.module';
         PairTypeEntity,
         WorkEntity,
         StudentWorkAnswerEntity,
+        NoteEntity,
       ],
       synchronize: true,
     }),

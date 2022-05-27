@@ -56,7 +56,16 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
             {pairNumber}
           </Box>
           <Typography sx={{ marginLeft: '17px', fontSize: '16px', fontFamily: 'Mont', }}>
-            Лекция
+            {
+              type === PairType.Lab && 'Лабораторная'
+            }
+            {
+              type === PairType.Lection && 'Лекция'
+            }
+            {
+              type === PairType.Practice && 'Практика'
+            }
+
           </Typography>
         </Box>
         {/* <Typography sx={{ fontSize: '16px' }}>11.45-13.15</Typography> */}
@@ -165,6 +174,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ numberOfPairInSamePairNumbe
               fontWeight: 500,
               marginRight: '5px',
               fontFamily: 'Mont',
+              marginTop: '10px'
             }}
           >
             {`подгруппа ${subGroupNumber}`}

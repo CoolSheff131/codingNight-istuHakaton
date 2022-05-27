@@ -14,7 +14,7 @@ import { ApiInstance } from '../api/Api';
 import { deleteStudent, getStudent, saveStudent } from '../helpers/student';
 import { Student } from '../models/Student';
 import NoteIcon from '@mui/icons-material/Note';
-
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 interface SideMenuProps {
   open: boolean;
   onClose: () => void;
@@ -226,32 +226,60 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                 </Button>
                 {
                   me && (
-                    <Button
-                      sx={{
-                        color: 'white',
-                        fontSize: '24px',
-                        display: 'flex',
-                        justifyContent: 'flex-start',
-                        paddingLeft: '24px',
-                        width: '100%',
-                        fontFamily: 'Mont',
-                        textTransform: 'none'
-                      }}
-                      startIcon={
-                        <NoteIcon
-                          sx={{
-                            marginRight: '8px',
-                            width: '32px',
-                            height: '32px',
-                          }}
-                        />
-                      }
-                      onClick={() => {
-                        handleNavigate('notes');
-                      }}
-                    >
-                      Заметки
-                    </Button>
+                    <>
+                      <Button
+                        sx={{
+                          color: 'white',
+                          fontSize: '24px',
+                          display: 'flex',
+                          justifyContent: 'flex-start',
+                          paddingLeft: '24px',
+                          width: '100%',
+                          fontFamily: 'Mont',
+                          textTransform: 'none'
+                        }}
+                        startIcon={
+                          <NoteIcon
+                            sx={{
+                              marginRight: '8px',
+                              width: '32px',
+                              height: '32px',
+                            }}
+                          />
+                        }
+                        onClick={() => {
+                          handleNavigate('notes');
+                        }}
+                      >
+                        Заметки
+                      </Button>
+                      <Button
+                        sx={{
+                          color: 'white',
+                          fontSize: '24px',
+                          display: 'flex',
+                          justifyContent: 'flex-start',
+                          paddingLeft: '24px',
+                          width: '100%',
+                          fontFamily: 'Mont',
+                          textTransform: 'none'
+                        }}
+                        startIcon={
+                          <ChatBubbleIcon
+                            sx={{
+                              marginRight: '8px',
+                              width: '32px',
+                              height: '32px',
+                            }}
+                          />
+                        }
+                        onClick={() => {
+                          handleNavigate('notes');
+                        }}
+                      >
+                        Мессенджер
+                      </Button>
+                    </>
                   )
                 }
 

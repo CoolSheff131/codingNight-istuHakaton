@@ -28,7 +28,7 @@ export class AppService {
     });
 
     groups.forEach((group) => {
-      group['url'] = `schedule/group/${group.id}`;
+      group['url'] = `schedule/groups/${group.id}`;
       group['type'] = 'Группы';
     });
     teachers.forEach((group) => {

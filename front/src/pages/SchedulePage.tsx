@@ -81,12 +81,12 @@ const SchedulePage = () => {
           {
             !isLoadingTitle && (
               <>
-                <Typography sx={{ color: '#7165E3', fontSize: 15, marginTop: '14px', fontFamily: 'Mont' }}>
+                <Typography sx={{ marginLeft: '20px', color: '#7165E3', fontSize: 15, marginTop: '14px', fontFamily: 'Mont' }}>
                   {type === 'groups' && 'Группа'}
                   {type === 'teacher' && 'Преподаватель'}
                   {type === 'auditory' && 'Аудитория'}
                 </Typography>
-                <Typography sx={{ color: '#7165E3', fontSize: 28, fontFamily: 'Mont' }}>
+                <Typography sx={{ marginLeft: '20px', color: '#7165E3', fontSize: 28, fontFamily: 'Mont' }}>
                   {title}
                 </Typography>
               </>
@@ -114,7 +114,7 @@ const SchedulePage = () => {
                   <Box key={key} sx={{ marginTop: '15px' }}>
                     <SwipeableViews enableMouseEvents resistance>
                       {
-                        value.map((pair: Pair, index: number) => <ScheduleItem numberOfPairInSamePairNumber={value.length} index={index} auditories={pair.auditories} discipline={pair.discipline} groups={pair.groups} pairNumber={pair.pairNumber} subGroupNumber={pair.subGroupNumber} teachers={pair.teachers} type={pair.type} id={pair.id} key={pair.id} />)
+                        value.map((pair: Pair, index: number) => <ScheduleItem numberOfPairInSamePairNumber={value.length} index={index} auditories={pair.auditories} discipline={pair.discipline} groups={pair.groups} pairNumber={pair.pairNumber} subGroupNumber={pair.subGroupNumber} teachers={pair.teachers} type={pair.pairType.type} id={pair.id} key={pair.id} />)
                       }
                     </SwipeableViews>
                   </Box>

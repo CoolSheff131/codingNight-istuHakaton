@@ -126,7 +126,7 @@ export default function SearchField() {
       isOptionEqualToValue={(option, value) => option.name === value.name}
       renderGroup={(params) => {
         return (
-          <div>
+          <div key={params.group}>
             <Box
               sx={{ paddingLeft: '14px', display: 'flex', alignItes: 'center' }}
             >
@@ -156,7 +156,7 @@ export default function SearchField() {
         })
 
         return (
-          <NavLink to={`${opt!.url}`} key={option.id} style={{ textDecoration: 'none' }}>
+          <NavLink to={`/${opt!.url}`} key={option.id} style={{ textDecoration: 'none' }}>
             <Button {...option} onClick={() => {
             }} sx={{ fontFamily: 'Mont', textTransform: 'none' }}>{option.key}</Button>
           </NavLink>
