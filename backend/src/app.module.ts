@@ -33,6 +33,7 @@ import { WorkEntity } from './works/entities/work.entity';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([GroupEntity, AuditoryEntity, TeacherEntity]),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost', //'postgres-db',

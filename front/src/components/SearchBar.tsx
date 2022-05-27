@@ -5,6 +5,8 @@ import { styled } from '@mui/material/styles';
 import { Button, Divider, Popper, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import { ApiInstance, SearchOption } from '../api/Api';
+import { NavLink } from 'react-router-dom';
 
 const CssTextField = styled(TextField)({
   '&': {
@@ -37,11 +39,67 @@ const CssTextField = styled(TextField)({
 });
 
 export default function SearchField() {
+
+  const [open, setOpen] = React.useState(false);
+  const [options, setOptions] = React.useState<SearchOption[]>([]);
+  const [loading, setLoading] = React.useState(false)
+
+  const [inputValue, setInputValue] = React.useState('');
+  let delayTimer: NodeJS.Timeout;
+  React.useEffect(() => {
+    let active = true;
+    if (!open || inputValue.length === 0) {
+      setOptions([]);
+      return undefined;
+    }
+
+
+
+    setLoading(true)
+    clearTimeout(delayTimer);
+    delayTimer = setTimeout(function () {
+      ApiInstance.search(inputValue).then((data) => {
+        if (active) {
+          setOptions(data);
+          setLoading(false)
+        }
+      })
+    }, 100);
+
+
+
+
+    return () => {
+      active = false;
+    };
+  }, [inputValue]);
+
+  React.useEffect(() => {
+    if (!open) {
+      setOptions([]);
+    }
+  }, [open]);
+
   return (
     <Autocomplete
-      options={searchOptions.sort((a, b) => -b.type.localeCompare(a.type))}
-      groupBy={(option) => option.type}
-      getOptionLabel={(option) => option.title}
+
+      open={open}
+      onOpen={() => {
+        setOpen(true);
+      }}
+      onClose={() => {
+        setOpen(false);
+      }}
+      inputValue={inputValue}
+      onInputChange={(event, newInputValue) => {
+        setInputValue(newInputValue);
+      }}
+
+      loading={loading}
+      options={options}
+      groupBy={(option) => option.type
+      }
+      getOptionLabel={(option) => option.name}
       sx={{
         width: '100%',
         '& 	.MuiAutocomplete-groupLabel': {
@@ -49,7 +107,7 @@ export default function SearchField() {
         },
       }}
       noOptionsText={
-        <Box sx={{ paddingLeft: '14px', display: 'flex', alignItes: 'center' }}>
+        < Box sx={{ paddingLeft: '14px', display: 'flex', alignItes: 'center' }}>
           <SentimentVeryDissatisfiedIcon sx={{ color: '#979797' }} />
           <Typography
             sx={{
@@ -63,8 +121,9 @@ export default function SearchField() {
           >
             Ничего не найденно
           </Typography>
-        </Box>
+        </Box >
       }
+      isOptionEqualToValue={(option, value) => option.name === value.name}
       renderGroup={(params) => {
         return (
           <div>
@@ -92,7 +151,16 @@ export default function SearchField() {
         );
       }}
       renderOption={(option: any) => {
-        return <Button key={option.id}>{option.key}</Button>;
+        const opt = options.find(opt => {
+          return opt.name === option.key
+        })
+
+        return (
+          <NavLink to={`${opt!.url}`} key={option.id} style={{ textDecoration: 'none' }}>
+            <Button {...option} onClick={() => {
+            }} sx={{ fontFamily: 'Mont', textTransform: 'none' }}>{option.key}</Button>
+          </NavLink>
+        )
       }}
       PopperComponent={(PopperOptions: any) => {
         return (
@@ -135,27 +203,22 @@ export default function SearchField() {
   );
 }
 
-enum groupsForSearch {
-  Groups = 'Группы',
-  Teachers = 'Преподаватели',
-  Auditories = 'Аудитории',
-}
 
-const searchOptions = [
-  { title: 'Муми-тролли', type: groupsForSearch.Groups },
-  { title: 'Снорки', type: groupsForSearch.Groups },
-  { title: 'Мумрики', type: groupsForSearch.Groups },
-  { title: 'Шуссель', type: groupsForSearch.Teachers },
-  { title: 'Муми-мама', type: groupsForSearch.Teachers },
-  { title: 'Тюлиппа', type: groupsForSearch.Teachers },
-  { title: 'Морра', type: groupsForSearch.Teachers },
-  { title: 'Тофсла', type: groupsForSearch.Teachers },
-  { title: 'Юксаре', type: groupsForSearch.Teachers },
-  { title: 'Туу-тикки', type: groupsForSearch.Teachers },
-  { title: 'Ти-ти-у-у', type: groupsForSearch.Teachers },
-  { title: 'Обсерватория', type: groupsForSearch.Auditories },
-  { title: 'Зимний сад', type: groupsForSearch.Auditories },
-  { title: 'Грот', type: groupsForSearch.Auditories },
-  { title: 'Танцплощадка', type: groupsForSearch.Auditories },
-  { title: 'У кустов сирени', type: groupsForSearch.Auditories },
-];
+//const searchOptions = [
+  // { title: 'Муми-тролли', type: groupsForSearch.Groups },
+  // { title: 'Снорки', type: groupsForSearch.Groups },
+  // { title: 'Мумрики', type: groupsForSearch.Groups },
+  // { title: 'Шуссель', type: groupsForSearch.Teachers },
+  // { title: 'Муми-мама', type: groupsForSearch.Teachers },
+  // { title: 'Тюлиппа', type: groupsForSearch.Teachers },
+  // { title: 'Морра', type: groupsForSearch.Teachers },
+  // { title: 'Тофсла', type: groupsForSearch.Teachers },
+  // { title: 'Юксаре', type: groupsForSearch.Teachers },
+  // { title: 'Туу-тикки', type: groupsForSearch.Teachers },
+  // { title: 'Ти-ти-у-у', type: groupsForSearch.Teachers },
+  // { title: 'Обсерватория', type: groupsForSearch.Auditories },
+  // { title: 'Зимний сад', type: groupsForSearch.Auditories },
+  // { title: 'Грот', type: groupsForSearch.Auditories },
+  // { title: 'Танцплощадка', type: groupsForSearch.Auditories },
+  // { title: 'У кустов сирени', type: groupsForSearch.Auditories },
+//];

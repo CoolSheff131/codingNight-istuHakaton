@@ -64,6 +64,16 @@ export class Api {
   async getTeacher(id: string): Promise<Teacher> {
     return this.axios.get<Teacher>('/teachers/' + id).then((data) => data.data);
   }
+
+  async search(title: string): Promise<SearchOption[]> {
+    return this.axios.get<SearchOption[]>('/search/' + title).then((data) => data.data);
+  }
+}
+
+export interface SearchOption {
+  name: string;
+  url: string;
+  type: string;
 }
 
 export const ApiInstance = new Api();
