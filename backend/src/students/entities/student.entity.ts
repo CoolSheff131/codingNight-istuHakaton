@@ -1,6 +1,7 @@
 import { PairEntity } from '../../pairs/entities/pair.entity';
 import { StudentWorkAnswerEntity } from '../../student-work-answer/entities/student-work-answer.entity';
 import { GroupEntity } from '../../groups/entities/group.entity';
+import { NoteEntity } from '../../notes/entities/note.entity';
 import {
   Column,
   Entity,
@@ -43,6 +44,9 @@ export class StudentEntity {
     (studentWorkAnswer: StudentWorkAnswerEntity) => studentWorkAnswer.student,
   )
   public studentWorkAnswers: StudentWorkAnswerEntity[];
+
+  @OneToMany(() => NoteEntity, (note: NoteEntity) => note.student)
+  public notes: NoteEntity[];
 
   @ManyToOne(() => GroupEntity, (group: GroupEntity) => group.students)
   public group: GroupEntity;

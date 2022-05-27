@@ -31,6 +31,7 @@ import { EventTypeEntity } from './event-types/entities/event-type.entity';
 import { PairTypeEntity } from './pair-types/entities/pair-type.entity';
 import { WorkEntity } from './works/entities/work.entity';
 import { AuthModule } from './auth/auth.module';
+import { NotesModule } from './notes/notes.module';
 
 @Module({
   imports: [
@@ -75,6 +76,7 @@ import { AuthModule } from './auth/auth.module';
     WorksModule,
     StudentWorkAnswerModule,
     AuthModule,
+    NotesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

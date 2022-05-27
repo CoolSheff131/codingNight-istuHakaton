@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { eventFiltersToSearchParams, pairFiltersToSearchParams } from '../helpers/query';
+import { getStudent } from '../helpers/student';
 import { Auditory } from '../models/Auditory';
 import { EventFilters } from '../models/Event';
 import { Group } from '../models/Group';
 import { GroupList } from '../models/GroupList';
 import { Institute } from '../models/Institute';
+import Note from '../models/Note';
 import { Pair, PairFilters } from '../models/Pair';
 import { PairList } from '../models/PairList';
 import { Student } from '../models/Student';
@@ -74,6 +76,16 @@ export class Api {
       .post<Student>(`/auth/login`, {
         email,
         password,
+      })
+      .then((data) => data.data);
+  }
+
+  async getNotes() {
+    return this.axios
+      .get<Note[]>(`/notes`, {
+        headers: {
+          Authorization: `Bearer ${getStudent()?.token}`,
+        },
       })
       .then((data) => data.data);
   }
