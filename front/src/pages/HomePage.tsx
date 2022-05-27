@@ -3,7 +3,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import SearchBar from '../components/SearchBar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import NewCalendar from '../components/NewCalendar';
+
 
 
 interface StyledTabProps {
@@ -87,7 +87,7 @@ const HomePage = () => {
     <>
       <Container maxWidth="sm">
         <SearchBar />
-        {/* <NewCalendar /> */}
+
         <StyledTabs value={value} onChange={handleChange}>
           <StyledTab label="Группы" onClick={() => navigate('group')} />
 

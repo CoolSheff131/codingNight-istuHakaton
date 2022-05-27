@@ -46,13 +46,13 @@ const CustomPickersDay = styled(PickersDay, {
     return {
       ...{ backgroundColor: 'transparent', color: 'white' },
       ...(dayIsBetween &&
-        {
-          // borderRadius: 0,
-          // backgroundColor: theme.palette.primary.main,
-          // '&:hover, &:focus': {
-          //     backgroundColor: theme.palette.primary.dark,
-          // },
-        }),
+      {
+        // borderRadius: 0,
+        // backgroundColor: theme.palette.primary.main,
+        // '&:hover, &:focus': {
+        //     backgroundColor: theme.palette.primary.dark,
+        // },
+      }),
       ...(isFirstDay && {
         borderTopLeftRadius: '50%',
         borderBottomLeftRadius: '50%',
@@ -78,8 +78,8 @@ const CustomPickersDay = styled(PickersDay, {
       }),
       ...(isOneWeek &&
         !dayIsBetween && {
-          display: 'none',
-        }),
+        display: 'none',
+      }),
 
       ...(outsideCurrentMonth && {
         opacity: 0.5,
@@ -101,9 +101,23 @@ const CustomPickersDay = styled(PickersDay, {
   },
 ) as React.ComponentType<CustomPickerDayProps>;
 
-export default function CustomDay() {
-  const [value, setValue] = React.useState<Date | null>(new Date());
+
+interface CalendarProps {
+  value: Date;
+  onChange: (ev: Date) => void;
+}
+
+const CustomDay: React.FC<CalendarProps> = ({ value, onChange }) => {
+
   const [isOneWeek, setIsOneWeek] = React.useState(true);
+
+  const handleChange = (newValue: Date | null) => {
+    if (!newValue) {
+      return
+    }
+    onChange(newValue)
+    //setValue(newValue);
+  }
 
   React.useEffect(() => {
     const a = document.getElementsByClassName(
@@ -187,7 +201,7 @@ export default function CustomDay() {
   };
 
   return (
-    <Box sx={{ backgroundColor: '#8B80F8', marginTop: '18px' }}>
+    <Box sx={{ backgroundColor: 'transparent', marginTop: '18px' }}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Typography
@@ -233,9 +247,7 @@ export default function CustomDay() {
           onMonthChange={(a) => {
             console.log(a);
           }}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
+          onChange={handleChange}
           renderDay={renderWeekPickerDay}
           renderInput={(params) => <TextField {...params} />}
           inputFormat="'Week of' MMM d"
@@ -253,3 +265,4 @@ export default function CustomDay() {
     </Box>
   );
 }
+export default CustomDay

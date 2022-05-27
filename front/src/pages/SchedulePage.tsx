@@ -8,7 +8,6 @@ import Break from '../components/Break';
 import { PairList } from '../models/PairList';
 import { Pair } from '../models/Pair';
 import { ApiInstance } from '../api/Api';
-import NewCalendar from '../components/NewCalendar';
 import { useNavigate, useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -20,8 +19,8 @@ const SchedulePage = () => {
   const [isLoadingTitle, setIsLoadingTitle] = React.useState(true);
   const [title, setTitle] = React.useState('');
   let { type, id } = useParams();
-  const onChooseDy = (ev: any) => {
-    setDayDate(ev.value);
+  const onChooseDy = (ev: Date) => {
+    setDayDate(ev);
   }
 
   React.useEffect(() => {
@@ -63,7 +62,7 @@ const SchedulePage = () => {
       <Container maxWidth="sm">
         <SearchBar />
         <Box sx={{ marginTop: '25px' }}>
-          <NewCalendar value={dayDate} onChange={onChooseDy} />
+          <Calendar value={dayDate} onChange={onChooseDy} />
         </Box>
       </Container>
       <Box

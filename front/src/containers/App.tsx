@@ -12,7 +12,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 import SideMenu from '../components/SideMenu';
-import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+
 import { useLocation } from 'react-router-dom';
 
 const App = () => {
