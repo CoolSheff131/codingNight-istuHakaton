@@ -10,6 +10,9 @@ import SchoolIcon from '@mui/icons-material/School';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import SwipeableViews from 'react-swipeable-views';
+import { ApiInstance } from '../api/Api';
+import { deleteStudent, getStudent, saveStudent } from '../helpers/student';
+import { Student } from '../models/Student';
 
 interface SideMenuProps {
   open: boolean;
@@ -23,10 +26,43 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
     setDrawerSlide(0);
     onClose();
   };
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [isLogining, setIsLogining] = React.useState(false)
+  const [me, setMe] = React.useState<Student | null>()
+  React.useEffect(() => {
+    const student = getStudent()
+    if (!student) {
+      return
+    }
+    setMe(student)
+  }, [])
+
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  }
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  }
   const handleNavigate = (path: string) => {
     navigate(path);
     handleClose();
   };
+  const authHandle = () => {
+    setIsLogining(true)
+    ApiInstance.login(email, password).then(data => {
+      console.log(data);
+      saveStudent(data)
+      setMe(data)
+      setIsLogining(false)
+      setDrawerSlide(0)
+    })
+  }
+  const handleLogout = () => {
+    deleteStudent()
+    setMe(null)
+  }
 
   const [drawerSlide, setDrawerSlide] = React.useState(0);
   return (
@@ -60,6 +96,13 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
             <CloseIcon sx={{ width: '32px', height: '32px' }} />
           </IconButton>
         </Box>
+        {
+          me && (
+            <Typography sx={{ fontSize: 34, textAlign: 'center', color: 'white', fontFamily: 'Mont' }}>
+              {me.firstName}
+            </Typography>
+          )
+        }
         <Box sx={{ height: '100%' }}>
           <SwipeableViews
             containerStyle={{ height: '100%' }}
@@ -188,25 +231,51 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                   flexDirection: 'column',
                 }}
               >
-                <Button
-                  onClick={() => setDrawerSlide(1)}
-                  style={{
-                    color: '#7165E3',
-                    fontSize: '24px',
-                    backgroundColor: 'white',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    textDecoration: 'none',
-                    borderRadius: '6px',
-                    marginLeft: '25px',
-                    marginRight: '25px',
-                    marginBottom: '20px',
-                    fontFamily: 'Mont',
-                    textTransform: 'none'
-                  }}
-                >
-                  Вход
-                </Button>
+                {
+                  me ? (
+                    <Button
+                      onClick={handleLogout}
+                      style={{
+                        color: 'white',
+                        fontSize: '24px',
+                        backgroundColor: 'transparent',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textDecoration: 'none',
+                        borderRadius: '6px',
+                        marginLeft: '25px',
+                        marginRight: '25px',
+                        marginBottom: '20px',
+                        fontFamily: 'Mont',
+                        border: '2px solid white',
+                        textTransform: 'none',
+                      }}
+                    >
+                      Выйти
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => setDrawerSlide(1)}
+                      style={{
+                        color: '#7165E3',
+                        fontSize: '24px',
+                        backgroundColor: 'white',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textDecoration: 'none',
+                        borderRadius: '6px',
+                        marginLeft: '25px',
+                        marginRight: '25px',
+                        marginBottom: '20px',
+                        fontFamily: 'Mont',
+                        textTransform: 'none'
+                      }}
+                    >
+                      Вход
+                    </Button>
+                  )
+                }
+
               </Box>
             </Box>
             <Box
@@ -238,6 +307,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                   Вход
                 </Typography>
                 <input
+                  value={email}
+                  onChange={handleEmailChange}
                   style={{
                     backgroundColor: 'white',
                     borderRadius: '6px',
@@ -250,10 +321,13 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     paddingBottom: '14px',
                     fontFamily: 'Mont'
                   }}
-                  placeholder="Логин"
-                  type="text"
+                  disabled={isLogining}
+                  placeholder="Почта"
+                  type="email"
                 />
                 <input
+                  value={password}
+                  onChange={handlePasswordChange}
                   style={{
                     backgroundColor: 'white',
                     borderRadius: '6px',
@@ -266,6 +340,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     paddingBottom: '14px',
                     fontFamily: 'Mont'
                   }}
+                  disabled={isLogining}
                   placeholder="Пароль"
                   type="password"
                 />
@@ -279,8 +354,10 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose, onOpen }) => {
                     textTransform: 'none',
                     fontFamily: 'Mont',
                   }}
+                  disabled={isLogining}
+                  onClick={authHandle}
                 >
-                  Вход
+                  Войти
                 </Button>
               </Box>
               <Box

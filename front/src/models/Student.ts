@@ -12,4 +12,5 @@ export interface Student {
   group: Group;
   subgroupNumber: number;
   avatarUrl: string;
+  token: string | undefined;
 }

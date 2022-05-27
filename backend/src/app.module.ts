@@ -30,6 +30,7 @@ import { EventEntity } from './events/entities/event.entity';
 import { EventTypeEntity } from './event-types/entities/event-type.entity';
 import { PairTypeEntity } from './pair-types/entities/pair-type.entity';
 import { WorkEntity } from './works/entities/work.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -73,6 +74,7 @@ import { WorkEntity } from './works/entities/work.entity';
     PairTypesModule,
     WorksModule,
     StudentWorkAnswerModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

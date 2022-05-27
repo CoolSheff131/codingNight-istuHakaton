@@ -7,6 +7,7 @@ import { GroupList } from '../models/GroupList';
 import { Institute } from '../models/Institute';
 import { Pair, PairFilters } from '../models/Pair';
 import { PairList } from '../models/PairList';
+import { Student } from '../models/Student';
 import { Teacher } from '../models/Teacher';
 import { Week } from '../models/Week';
 import IApi from './IApi';
@@ -67,6 +68,14 @@ export class Api {
 
   async search(title: string): Promise<SearchOption[]> {
     return this.axios.get<SearchOption[]>('/search/' + title).then((data) => data.data);
+  }
+  async login(email: string, password: string) {
+    return this.axios
+      .post<Student>(`/auth/login`, {
+        email,
+        password,
+      })
+      .then((data) => data.data);
   }
 }
 
